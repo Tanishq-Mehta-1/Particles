@@ -16,6 +16,9 @@
     <Filter Include="Shader Code">
       <UniqueIdentifier>{fb3df8f0-dc17-4b1d-a9aa-e0fb4038e331}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Dependencies">
+      <UniqueIdentifier>{17defddd-e9e2-45ab-b02f-5a6a4dcaff51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source.cpp">
