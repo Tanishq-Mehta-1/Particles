@@ -36,4 +36,9 @@
       <Filter>Shader Code</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="particle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
