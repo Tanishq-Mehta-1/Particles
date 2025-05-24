@@ -12,24 +12,32 @@ static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigne
 
 int width = 800;
 int height = 800;
+float deltaTime{ 0.0f };
+float currentTime = { 0.0f };
+float lastTime = { 0.0f };
 GLFWwindow* window{};
 
 int res = 100;
 
 unsigned int circleVAO, circleVBO;
 
-Particle point{ 0.1f , glm::vec2(0.0f), glm::vec2(0.0f, 0.0f)};
-
 
 int main()
 {
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
+
+	Particle point{ 10.0f , glm::vec2(0.0f, 0.0f), window };
+
 	//setting up shaders
 	Shader objectShader{ "vertexShader.glsl", "fragmentShader.glsl" };
 
 	while (!glfwWindowShouldClose(window))
 	{
+		lastTime = currentTime;
+		currentTime = glfwGetTime();
+		deltaTime = currentTime - lastTime;
+
 		//inputs
 		processInput(window);
 
@@ -38,8 +46,11 @@ int main()
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		point.drawCircle(circleVAO, objectShader, res );
-		point.update();
+		point.drawCircle(circleVAO, objectShader, res);
+		point.update(deltaTime, window);
+
+		if (point.position.y < -500)
+			glfwSetWindowShouldClose(window, true);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
