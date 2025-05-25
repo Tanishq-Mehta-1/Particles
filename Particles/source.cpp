@@ -7,7 +7,7 @@
 
 #define PI 3.14
 
-int setup(int width, int height, GLFWwindow* &window);
+int setup(int width, int height, GLFWwindow*& window);
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO);
@@ -30,7 +30,7 @@ int main()
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
 
-	const int spawn_num = 50;
+	const int spawn_num = 7;
 	std::vector<Particle> points;
 
 	//randomly spawn points
@@ -40,11 +40,20 @@ int main()
 		/*float pos_y = getRandom( 0, 400);
 		float pos_x = getRandom( 0, 400);*/
 
-		float pos_x = i - 25.0f;
-		float pos_y = 300.0f * sin(glm::radians(pos_x));
-		float r = 5.0f;
 
-		Particle particle(r, glm::vec2(pos_x ,pos_y), window);
+		float r = 30.0f;
+		float pos_x{};
+		if (spawn_num % 2 == 0)
+			pos_x = -(spawn_num / 2) * r + i * r;
+		else {
+			float middle = spawn_num / 2;
+			pos_x = (i - middle) * r * 2;
+		}
+
+		float pos_y = 0.0f;
+
+
+		Particle particle(r, glm::vec2(pos_x, pos_y), window);
 		points.push_back(particle);
 	}
 
@@ -67,8 +76,9 @@ int main()
 
 		for (int i = 0; i < spawn_num; i++)
 		{
-			points[i].drawCircle(circleVAO, objectShader, res);
 			points[i].update(deltaTime, window);
+			points[i].drawCircle(circleVAO, objectShader, res);
+
 			std::cout << "Position " << i << ' ' << points[i].position.x << ' ' << points[i].position.y << '\n';
 		}
 
@@ -158,7 +168,7 @@ int setup(int width, int height, GLFWwindow*& window) {
 
 float getRandom(float min, float max) {
 	float num = rand();
-	while (num <= min || num >= max){
+	while (num <= min || num >= max) {
 		num = rand();
 	}
 	return num;
