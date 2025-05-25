@@ -16,8 +16,8 @@ public:
 	glm::vec3 colour;
 	glm::vec2 position; 
 
-	float restitution_coefficient{ 0.95f };
-	glm::vec2 velocity{ 0.0f, 0.0f };
+	float restitution_coefficient{ 1.1f };
+	glm::vec2 velocity{ 0.0f, 200.0f };
 	float pixelsPerMeter{ 500.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter };
 
@@ -60,6 +60,8 @@ public:
 		velocity += acceleration * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
 
+		updateColour();
+
 		position += velocity * deltaTime;
 	}
 
@@ -92,6 +94,18 @@ public:
 				velocity.x *= -restitution_coefficient;
 				position.x = bound_x - radius;
 			}
+		}
+
+		void updateColour()
+		{
+			float speed = glm::length(velocity);
+			//W = 12K, R = 8K, G = 4K, B = 0K, interpolate between these
+			if (speed < 4000.0f)
+				colour = glm::vec3(0.0f, 1.0f, -1.0f) * (speed / 4000.0f) + glm::vec3(0.0f, 0.0f, 1.0f);
+			else if (speed < 8000.0f)//speed >= 4k and < 8k
+				colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - 4000.0f) / 4000.0f) + glm::vec3(0.0f, 1.0f, 0.0f);
+			else //speed >= 8k and <= 12k
+				colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - 8000.0f) / 4000.0f) + glm::vec3(1.0f, 0.0f, 0.0f);
 		}
 
 		void displayVec2(glm::vec2 vector) const

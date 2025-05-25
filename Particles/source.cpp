@@ -21,7 +21,7 @@ float lastTime = { 0.0f };
 GLFWwindow* window{};
 
 int res = 30;
-const int spawn_num = 100; //looks good only until 100
+const int spawn_num = 10; //looks good only until 100
 
 unsigned int circleVAO, circleVBO;
 
@@ -46,8 +46,7 @@ int main()
 		float G = getRandom(0, max) / max;
 		float B = getRandom(0, max) / max;
 
-
-		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, 0.0));
+		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B));
 		points.push_back(particle);
 	}
 
