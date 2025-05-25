@@ -16,20 +16,22 @@ public:
 
 	float radius;
 	float mass{ 1.0f };
+	float density{ 1.0f };
 	int window_width;
 	int window_height;
 	glm::vec3 colour;
 	glm::vec2 position;
 
-	float restitution_coefficient{ 1.0f };
+	float restitution_coefficient{ 0.7f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
-	float pixelsPerMeter{ 500.0f / 9.8f };
-	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter };
-
+	float pixelsPerMeter{ 300.0f / 9.8f };
+	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter }; 
+	//remove pixelsPerMeter for slowmo haha
 	Particle(float r, glm::vec2 p, GLFWwindow* window, glm::vec3 col) {
 		radius = r;
 		position = p;
 		colour = col;
+		mass = 4.0f / 3.0f * 3.14 * radius * radius * radius * density;
 
 		glfwGetWindowSize(window, &window_width, &window_height);
 	}
@@ -66,6 +68,7 @@ public:
 		velocity += acceleration * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
 		position += velocity * deltaTime;
+		acceleration.x =  200 * sin(glfwGetTime());
 	}
 
 private:
@@ -74,7 +77,7 @@ private:
 	{
 		float bound_y = window_height / 2;
 		float bound_x = window_width / 2;
-		float e = 1.0f; //boundary coefficient of restitution
+		float e = 0.7f; //boundary coefficient of restitution
 
 		//very important to clamp the positions, else the bounces are not completely elastic
 		if (position.y - radius <= -bound_y)
@@ -100,7 +103,7 @@ private:
 		}
 	}
 
-	float Green_Speed{ 1000.0f }, Red_Speed{ 2000.0f }, White_Speed{ 12000.0f };
+	float Green_Speed{ 500.0f  }, Red_Speed{ 1000.0f  }, White_Speed{ 12000.0f};
 	void enableVelocityColouring()
 	{
 		float speed = glm::length(velocity);
@@ -131,29 +134,29 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 	float distance = length(delta);
 
 	//detect a bit before actual collision to prevent jittering
-	if (distance <= p1.radius + p2.radius - 0.01f) {
+	if (distance <= p1.radius + p2.radius - 0.0001f) {
 
 		//normalize(vec) = vec / length(vec), which is NaN for 0 vectors
-		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f): glm::normalize(delta);
 		glm::vec2 relative_velocity = p1.velocity - p2.velocity;
+		glm::vec2 normal = distance == 0 ? glm::normalize(relative_velocity) : glm::normalize(delta);
 
 		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
 		
-		if (velocity_along_normal > 0.1f) //the particles are separating
+		if (velocity_along_normal > 0.0f) //the particles are separating
 			return;
 
 		//calculate impulse
 		float m1 = p1.mass;
 		float m2 = p2.mass;
-		float e = 1.0f;
-		//float j = -(1 + e) * velocity_along_normal / (1/m1 + 1/m2);
-		//glm::vec2 impulse = j * normal;
-		glm::vec2 impulse = -velocity_along_normal * normal;
+		float e = std::min(p1.restitution_coefficient, p2.restitution_coefficient);
+		float j = -(1 + e) * velocity_along_normal / (1/m1 + 1/m2);
+		glm::vec2 impulse = j * normal;
+		//glm::vec2 impulse = -velocity_along_normal * normal;
 
-		//p1.velocity -= impulse / m1;
-		//p2.velocity += impulse / m2;
-		p1.velocity += impulse;
-		p2.velocity -= impulse;
+		p1.velocity += impulse / m1;
+		p2.velocity -= impulse / m2;
+		//p1.velocity += impulse;
+		//p2.velocity -= impulse;
 
 		//resolving interpenetration
 		//the weights ensure that the heavier mass moves less
@@ -164,8 +167,6 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 			p1.position += offset * m2;
 			p2.position -= offset * m1;
 		}
-
-		//no overlap allowed
 	}
 }
 

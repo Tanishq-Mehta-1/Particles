@@ -20,8 +20,8 @@ float currentTime = { 0.0f };
 float lastTime = { 0.0f };
 GLFWwindow* window{};
 
-int res = 30;
-const int particleNum = 200; //looks good only until 100
+int res = 20;
+const int particleNum = 1000; //doesnt work too well for  
 
 unsigned int circleVAO, circleVBO;
 
@@ -39,7 +39,7 @@ int main()
 		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
 		float pos_y = getRandom(0, 300);
 		float pos_x = getRandom(0, width) - width / 2;
-		float r = getRandom(5, 10);
+		float r = getRandom(5, 10); //works better with smaller radii
 
 		/*float pos_y = i * 100.0f;
 		float pos_x = 0;
@@ -170,6 +170,9 @@ int setup(int width, int height, GLFWwindow*& window) {
 
 float getRandom(float min, float max) {
 	float num = rand();
+	if (min == max)
+		return min;
+
 	while (num <= min || num >= max) {
 		num = rand();
 	}
