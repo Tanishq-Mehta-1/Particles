@@ -13,16 +13,18 @@ public:
 	float radius;
 	int window_width;
 	int window_height;
+	glm::vec3 colour;
 	glm::vec2 position; 
 
-	float restitution_coefficient{ 1.0f };
+	float restitution_coefficient{ 0.95f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
 	float pixelsPerMeter{ 500.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter };
 
-	Particle(float r, glm::vec2 p, GLFWwindow* window) {
+	Particle(float r, glm::vec2 p, GLFWwindow* window, glm::vec3 col) {
 		radius = r;
 		position = p;
+		colour = col;
 
 		glfwGetWindowSize(window, &window_width, &window_height);
 	}
@@ -31,6 +33,8 @@ public:
 	{
 		shader.use();
 		glBindVertexArray(VAO);
+
+		shader.setVec3("aCol", colour);
 
 		glm::mat4 model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(position, 0.0f)); //the vector to translate by must be withing -1,1 to stay on screen
@@ -93,6 +97,11 @@ public:
 		void displayVec2(glm::vec2 vector) const
 		{
 			std::cout << vector.x << ' ' << vector.y << '\n';
+		}
+
+		void displayVec3(glm::vec3 vector) const
+		{
+			std::cout << vector.x << ' ' << vector.y << ' ' << vector.z << '\n';
 		}
 
 

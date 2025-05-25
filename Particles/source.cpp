@@ -20,40 +20,34 @@ float currentTime = { 0.0f };
 float lastTime = { 0.0f };
 GLFWwindow* window{};
 
-int res = 100;
+int res = 30;
+const int spawn_num = 100; //looks good only until 100
 
 unsigned int circleVAO, circleVBO;
-
 
 int main()
 {
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
 
-	const int spawn_num = 7;
 	std::vector<Particle> points;
 
 	//randomly spawn points
 	srand(glfwGetTime());
 	for (int i = 0; i < spawn_num; i++)
 	{
-		/*float pos_y = getRandom( 0, 400);
-		float pos_x = getRandom( 0, 400);*/
+		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
+		float pos_y = getRandom(0, 300);
+		float pos_x = getRandom(0, width) - width / 2;
+		float r = getRandom(10, 20);
+
+		float max{ 10000 };
+		float R = getRandom(0, max) / max;
+		float G = getRandom(0, max) / max;
+		float B = getRandom(0, max) / max;
 
 
-		float r = 30.0f;
-		float pos_x{};
-		if (spawn_num % 2 == 0)
-			pos_x = -(spawn_num / 2) * r + i * r;
-		else {
-			float middle = spawn_num / 2;
-			pos_x = (i - middle) * r * 2;
-		}
-
-		float pos_y = 0.0f;
-
-
-		Particle particle(r, glm::vec2(pos_x, pos_y), window);
+		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, 0.0));
 		points.push_back(particle);
 	}
 
@@ -78,8 +72,7 @@ int main()
 		{
 			points[i].update(deltaTime, window);
 			points[i].drawCircle(circleVAO, objectShader, res);
-
-			std::cout << "Position " << i << ' ' << points[i].position.x << ' ' << points[i].position.y << '\n';
+			//extremely slow process, since we are sending gpu information for every particle, can be made better using framebuffers
 		}
 
 		glfwPollEvents();
