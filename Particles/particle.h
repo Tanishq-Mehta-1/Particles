@@ -6,18 +6,23 @@
 #include <glad/glad.h>
 #include <shader.h>
 
-class Particle 
+//void handleParticleCollisions(Particle& p1, Particle& p2);
+void displayVec2(glm::vec2 vector);
+void displayVec3(glm::vec3 vector);
+
+class Particle
 {
 public:
 
 	float radius;
+	float mass{ 1.0f };
 	int window_width;
 	int window_height;
 	glm::vec3 colour;
-	glm::vec2 position; 
+	glm::vec2 position;
 
-	float restitution_coefficient{ 1.1f };
-	glm::vec2 velocity{ 0.0f, 200.0f };
+	float restitution_coefficient{ 1.0f };
+	glm::vec2 velocity{ 0.0f, 0.0f };
 	float pixelsPerMeter{ 500.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter };
 
@@ -40,10 +45,10 @@ public:
 		model = glm::translate(model, glm::vec3(position, 0.0f)); //the vector to translate by must be withing -1,1 to stay on screen
 		model = glm::scale(model, 2.0f * radius * glm::vec3(1.0));
 		shader.setMat4("model", model);
-		
+
 		float width = window_width;
 		float height = window_height;
-		glm::mat4 projection = glm::ortho(-width/2, width / 2, -height / 2, height / 2, -1.0f, 1.0f);
+		glm::mat4 projection = glm::ortho(-width / 2, width / 2, -height / 2, height / 2, -1.0f, 1.0f);
 		shader.setMat4("projection", projection);
 
 		//draw call
@@ -55,70 +60,113 @@ public:
 	void update(float deltaTime, GLFWwindow* window)
 	{
 		handleBoundaryCollision(window);
+		enableVelocityColouring();
 
 		float maxVelocity{ 12000.0f }; //doesnt tunnel till 18k, but 12k looks good
 		velocity += acceleration * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
-
-		updateColour();
-
 		position += velocity * deltaTime;
 	}
 
-	private:
-		
-		void handleBoundaryCollision(GLFWwindow* window)
+private:
+
+	void handleBoundaryCollision(GLFWwindow* window)
+	{
+		float bound_y = window_height / 2;
+		float bound_x = window_width / 2;
+		float e = 1.0f; //boundary coefficient of restitution
+
+		//very important to clamp the positions, else the bounces are not completely elastic
+		if (position.y - radius <= -bound_y)
 		{
-			float bound_y = window_height / 2;
-			float bound_x = window_width / 2;
-
-			//very important to clamp the positions, else the bounces are not completely elastic
-			if (position.y - radius <= -bound_y)
-			{
-				velocity.y *= -restitution_coefficient;
-				position.y = -bound_y + radius;
-			}
-			else if (position.y + radius >= bound_y) 
-			{
-				velocity.y *= -restitution_coefficient;
-				position.y = bound_y - radius;
-			}
-
-			if (position.x - radius <= -bound_x)
-			{
-				velocity.x *= -restitution_coefficient;
-				position.x = -bound_x + radius;
-			}
-			else if (position.x + radius >= bound_x)
-			{
-				velocity.x *= -restitution_coefficient;
-				position.x = bound_x - radius;
-			}
+			velocity.y *= -e;
+			position.y = -bound_y + radius;
+		}
+		else if (position.y + radius >= bound_y)
+		{
+			velocity.y *= -e;
+			position.y = bound_y - radius;
 		}
 
-		void updateColour()
+		if (position.x - radius <= -bound_x)
 		{
-			float speed = glm::length(velocity);
-			//W = 12K, R = 8K, G = 4K, B = 0K, interpolate between these
-			if (speed < 4000.0f)
-				colour = glm::vec3(0.0f, 1.0f, -1.0f) * (speed / 4000.0f) + glm::vec3(0.0f, 0.0f, 1.0f);
-			else if (speed < 8000.0f)//speed >= 4k and < 8k
-				colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - 4000.0f) / 4000.0f) + glm::vec3(0.0f, 1.0f, 0.0f);
-			else //speed >= 8k and <= 12k
-				colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - 8000.0f) / 4000.0f) + glm::vec3(1.0f, 0.0f, 0.0f);
+			velocity.x *= -e;
+			position.x = -bound_x + radius;
 		}
-
-		void displayVec2(glm::vec2 vector) const
+		else if (position.x + radius >= bound_x)
 		{
-			std::cout << vector.x << ' ' << vector.y << '\n';
+			velocity.x *= -e;
+			position.x = bound_x - radius;
 		}
+	}
 
-		void displayVec3(glm::vec3 vector) const
-		{
-			std::cout << vector.x << ' ' << vector.y << ' ' << vector.z << '\n';
-		}
-
-
+	float Green_Speed{ 1000.0f }, Red_Speed{ 2000.0f }, White_Speed{ 12000.0f };
+	void enableVelocityColouring()
+	{
+		float speed = glm::length(velocity);
+		//W = 12K, R = 8K, G = 4K, B = 0K, interpolate between these 
+		if (speed < Green_Speed)
+			colour = glm::vec3(0.0f, 1.0f, -1.0f) * (speed / Green_Speed) + glm::vec3(0.0f, 0.0f, 1.0f);
+		else if (speed < Red_Speed)//speed >= 4k and < 8k
+			colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - Green_Speed) / Red_Speed - Green_Speed) + glm::vec3(0.0f, 1.0f, 0.0f);
+		else //speed >= 8k and <= 12k
+			colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - Red_Speed) / White_Speed - Red_Speed) + glm::vec3(1.0f, 0.0f, 0.0f);
+	}
 };
+
+//utility functions
+void displayVec2(glm::vec2 vector)
+{
+	std::cout << vector.x << ' ' << vector.y << '\n';
+}
+
+void displayVec3(glm::vec3 vector)
+{
+	std::cout << vector.x << ' ' << vector.y << ' ' << vector.z << '\n';
+}
+
+void handleParticleCollisions(Particle& p1, Particle& p2)
+{
+	glm::vec2 delta = p1.position - p2.position;
+	float distance = length(delta);
+
+	//detect a bit before actual collision to prevent jittering
+	if (distance <= p1.radius + p2.radius - 0.01f) {
+
+		//normalize(vec) = vec / length(vec), which is NaN for 0 vectors
+		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f): glm::normalize(delta);
+		glm::vec2 relative_velocity = p1.velocity - p2.velocity;
+
+		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
+		
+		if (velocity_along_normal > 0.1f) //the particles are separating
+			return;
+
+		//calculate impulse
+		float m1 = p1.mass;
+		float m2 = p2.mass;
+		float e = 1.0f;
+		//float j = -(1 + e) * velocity_along_normal / (1/m1 + 1/m2);
+		//glm::vec2 impulse = j * normal;
+		glm::vec2 impulse = -velocity_along_normal * normal;
+
+		//p1.velocity -= impulse / m1;
+		//p2.velocity += impulse / m2;
+		p1.velocity += impulse;
+		p2.velocity -= impulse;
+
+		//resolving interpenetration
+		//the weights ensure that the heavier mass moves less
+		float interpenetration = p1.radius + p2.radius - distance;
+		if (interpenetration > 0.0f)
+		{
+			glm::vec2 offset = (interpenetration / (m1 + m2)) * normal;
+			p1.position += offset * m2;
+			p2.position -= offset * m1;
+		}
+
+		//no overlap allowed
+	}
+}
 
 #endif

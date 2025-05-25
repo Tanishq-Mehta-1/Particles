@@ -21,7 +21,7 @@ float lastTime = { 0.0f };
 GLFWwindow* window{};
 
 int res = 30;
-const int spawn_num = 10; //looks good only until 100
+const int particleNum = 200; //looks good only until 100
 
 unsigned int circleVAO, circleVBO;
 
@@ -33,13 +33,17 @@ int main()
 	std::vector<Particle> points;
 
 	//randomly spawn points
-	srand(glfwGetTime());
-	for (int i = 0; i < spawn_num; i++)
+	srand(23);
+	for (int i = 0; i < particleNum; i++)
 	{
 		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
 		float pos_y = getRandom(0, 300);
 		float pos_x = getRandom(0, width) - width / 2;
-		float r = getRandom(10, 20);
+		float r = getRandom(5, 10);
+
+		/*float pos_y = i * 100.0f;
+		float pos_x = 0;
+		float r = 20.0f;*/
 
 		float max{ 10000 };
 		float R = getRandom(0, max) / max;
@@ -67,11 +71,17 @@ int main()
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		for (int i = 0; i < spawn_num; i++)
+		//handle collisions
+		for (int i = 0; i < particleNum; i++) {
+			for (int j = i + 1; j < particleNum; j++)
+				handleParticleCollisions(points[i], points[j]);
+		}
+
+		for (int i = 0; i < particleNum; i++)
 		{
 			points[i].update(deltaTime, window);
 			points[i].drawCircle(circleVAO, objectShader, res);
-			//extremely slow process, since we are sending gpu information for every particle, can be made better using framebuffers
+			//extremely slow process, since we are sending gpu information for every particle, can be made better using 
 		}
 
 		glfwPollEvents();
