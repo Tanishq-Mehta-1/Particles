@@ -2,6 +2,8 @@
 #include <vector>
 #include <glfw/glfw3.h>
 #include "particle.h"
+#include <chrono>
+#include <thread>
 
 #define PI 3.14
 
@@ -48,9 +50,6 @@ int main()
 
 		point.drawCircle(circleVAO, objectShader, res);
 		point.update(deltaTime, window);
-
-		if (point.position.y < -500)
-			glfwSetWindowShouldClose(window, true);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
