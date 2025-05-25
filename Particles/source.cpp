@@ -2,8 +2,8 @@
 #include <vector>
 #include <glfw/glfw3.h>
 #include "particle.h"
-#include <chrono>
-#include <thread>
+
+//for fluid like behaviour, increase the num of particles
 
 #define PI 3.14
 
@@ -21,7 +21,7 @@ float lastTime = { 0.0f };
 GLFWwindow* window{};
 
 int res = 20;
-const int particleNum = 1000; //doesnt work too well for  
+const int particleNum = 400; //works well till , with no overlap till ~300
 
 unsigned int circleVAO, circleVBO;
 
@@ -39,7 +39,7 @@ int main()
 		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
 		float pos_y = getRandom(0, 300);
 		float pos_x = getRandom(0, width) - width / 2;
-		float r = getRandom(5, 10); //works better with smaller radii
+		float r = getRandom(7, 10); //works better with smaller radii
 
 		/*float pos_y = i * 100.0f;
 		float pos_x = 0;
@@ -49,8 +49,10 @@ int main()
 		float R = getRandom(0, max) / max;
 		float G = getRandom(0, max) / max;
 		float B = getRandom(0, max) / max;
+		float e = getRandom(0.90 * max, max) / max; //value between 0.57 and 1
+		std::cout << e << '\n';
 
-		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B));
+		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), e);
 		points.push_back(particle);
 	}
 
@@ -67,7 +69,7 @@ int main()
 		processInput(window);
 
 		//background colour
-		glm::vec3 bgCol = glm::vec3(0.5f);
+		glm::vec3 bgCol = glm::vec3(0.0f);
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -170,6 +172,10 @@ int setup(int width, int height, GLFWwindow*& window) {
 
 float getRandom(float min, float max) {
 	float num = rand();
+
+	if (min > max)
+		return max;
+
 	if (min == max)
 		return min;
 

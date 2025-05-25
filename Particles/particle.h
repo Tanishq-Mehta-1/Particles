@@ -14,23 +14,24 @@ class Particle
 {
 public:
 
+	//properties
 	float radius;
 	float mass{ 1.0f };
 	float density{ 1.0f };
-	int window_width;
-	int window_height;
 	glm::vec3 colour;
 	glm::vec2 position;
 
-	float restitution_coefficient{ 0.7f };
+	float restitution_coefficient{ 1.0f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
 	float pixelsPerMeter{ 300.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter }; 
 	//remove pixelsPerMeter for slowmo haha
-	Particle(float r, glm::vec2 p, GLFWwindow* window, glm::vec3 col) {
+
+	Particle(float r, glm::vec2 p, GLFWwindow* window, glm::vec3 col, float e) {
 		radius = r;
 		position = p;
 		colour = col;
+		restitution_coefficient = e;
 		mass = 4.0f / 3.0f * 3.14 * radius * radius * radius * density;
 
 		glfwGetWindowSize(window, &window_width, &window_height);
@@ -64,14 +65,23 @@ public:
 		handleBoundaryCollision(window);
 		enableVelocityColouring();
 
+		//implementing rudimentary drag 
+		float speed = length(velocity) / pixelsPerMeter;
+		glm::vec2 drag_dir = speed > 0.001f ? -normalize(velocity) : glm::vec2(0.0f);
+		glm::vec2 a_drag = 0.5f * 0.47f * 3.14f * radius * radius * speed * speed * (1 / mass) * drag_dir; //0.47 is drag coefficient of sphere
+
 		float maxVelocity{ 12000.0f }; //doesnt tunnel till 18k, but 12k looks good
 		velocity += acceleration * deltaTime;
+		velocity += a_drag * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
+
 		position += velocity * deltaTime;
-		acceleration.x =  200 * sin(glfwGetTime());
 	}
 
 private:
+
+	int window_width;
+	int window_height;
 
 	void handleBoundaryCollision(GLFWwindow* window)
 	{
@@ -103,7 +113,7 @@ private:
 		}
 	}
 
-	float Green_Speed{ 500.0f  }, Red_Speed{ 1000.0f  }, White_Speed{ 12000.0f};
+	float Green_Speed{ 250.0f  }, Red_Speed{ 500.0f }, White_Speed{ 12000.0f};
 	void enableVelocityColouring()
 	{
 		float speed = glm::length(velocity);
@@ -151,12 +161,9 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		float e = std::min(p1.restitution_coefficient, p2.restitution_coefficient);
 		float j = -(1 + e) * velocity_along_normal / (1/m1 + 1/m2);
 		glm::vec2 impulse = j * normal;
-		//glm::vec2 impulse = -velocity_along_normal * normal;
 
 		p1.velocity += impulse / m1;
 		p2.velocity -= impulse / m2;
-		//p1.velocity += impulse;
-		//p2.velocity -= impulse;
 
 		//resolving interpenetration
 		//the weights ensure that the heavier mass moves less
