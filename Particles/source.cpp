@@ -11,6 +11,7 @@ int setup(int width, int height, GLFWwindow* &window);
 void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO);
+float getRandom(float min, float max);
 
 int width = 800;
 int height = 800;
@@ -29,7 +30,23 @@ int main()
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
 
-	Particle point{ 10.0f , glm::vec2(0.0f, 0.0f), window };
+	const int spawn_num = 50;
+	std::vector<Particle> points;
+
+	//randomly spawn points
+	srand(glfwGetTime());
+	for (int i = 0; i < spawn_num; i++)
+	{
+		/*float pos_y = getRandom( 0, 400);
+		float pos_x = getRandom( 0, 400);*/
+
+		float pos_x = i - 25.0f;
+		float pos_y = 300.0f * sin(glm::radians(pos_x));
+		float r = 5.0f;
+
+		Particle particle(r, glm::vec2(pos_x ,pos_y), window);
+		points.push_back(particle);
+	}
 
 	//setting up shaders
 	Shader objectShader{ "vertexShader.glsl", "fragmentShader.glsl" };
@@ -48,8 +65,12 @@ int main()
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		point.drawCircle(circleVAO, objectShader, res);
-		point.update(deltaTime, window);
+		for (int i = 0; i < spawn_num; i++)
+		{
+			points[i].drawCircle(circleVAO, objectShader, res);
+			points[i].update(deltaTime, window);
+			std::cout << "Position " << i << ' ' << points[i].position.x << ' ' << points[i].position.y << '\n';
+		}
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
@@ -133,4 +154,12 @@ int setup(int width, int height, GLFWwindow*& window) {
 	circleGenerate(glm::vec2(0.0f), res, circleVAO, circleVBO);
 
 	return 0;
+}
+
+float getRandom(float min, float max) {
+	float num = rand();
+	while (num <= min || num >= max){
+		num = rand();
+	}
+	return num;
 }

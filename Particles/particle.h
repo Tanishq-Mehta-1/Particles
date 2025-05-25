@@ -15,7 +15,7 @@ public:
 	int window_height;
 	glm::vec2 position; 
 
-	float restitution_coefficient{ 1.0f }; 
+	float restitution_coefficient{ 1.0f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
 	float pixelsPerMeter{ 500.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter };
