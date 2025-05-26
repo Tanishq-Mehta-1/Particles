@@ -65,17 +65,18 @@ public:
 		handleBoundaryCollision(window);
 		enableVelocityColouring();
 
-		//implementing rudimentary drag 
-		float speed = length(velocity) / pixelsPerMeter;
-		glm::vec2 drag_dir = speed > 0.001f ? -normalize(velocity) : glm::vec2(0.0f);
-		glm::vec2 a_drag = 0.5f * 0.47f * 3.14f * radius * radius * speed * speed * (1 / mass) * drag_dir; //0.47 is drag coefficient of sphere
+		//drag calculations
+		glm::vec2 a_drag;
+		calculateDrag(a_drag);
+		velocity += a_drag * deltaTime;
 
 		float maxVelocity{ 12000.0f }; //doesnt tunnel till 18k, but 12k looks good
 		velocity += acceleration * deltaTime;
-		velocity += a_drag * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
 
 		position += velocity * deltaTime;
+
+		acceleration.x = 200.0f * sin(glfwGetTime());
 	}
 
 private:
@@ -87,7 +88,7 @@ private:
 	{
 		float bound_y = window_height / 2;
 		float bound_x = window_width / 2;
-		float e = 0.7f; //boundary coefficient of restitution
+		float e = 1.0f; //boundary coefficient of restitution
 
 		//very important to clamp the positions, else the bounces are not completely elastic
 		if (position.y - radius <= -bound_y)
@@ -124,6 +125,15 @@ private:
 			colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - Green_Speed) / Red_Speed - Green_Speed) + glm::vec3(0.0f, 1.0f, 0.0f);
 		else //speed >= 8k and <= 12k
 			colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - Red_Speed) / White_Speed - Red_Speed) + glm::vec3(1.0f, 0.0f, 0.0f);
+	}
+
+	void calculateDrag(glm::vec2 &a_drag) const
+	{
+		//implementing rudimentary drag 
+		float speed = length(velocity) / pixelsPerMeter;
+		float fluid_density = 1.0f; //air has 1.0f
+		glm::vec2 drag_dir = speed > 0.001f ? -normalize(velocity) : glm::vec2(0.0f);
+		a_drag = 0.5f * 0.47f * 3.14f * radius * radius * speed * speed * (1 / mass) * fluid_density * drag_dir; //0.47 is drag coefficient of sphere
 	}
 };
 

@@ -20,7 +20,7 @@ float currentTime = { 0.0f };
 float lastTime = { 0.0f };
 GLFWwindow* window{};
 
-int res = 20;
+int res = 30;
 const int particleNum = 400; //works well till , with no overlap till ~300
 
 unsigned int circleVAO, circleVBO;
@@ -49,8 +49,7 @@ int main()
 		float R = getRandom(0, max) / max;
 		float G = getRandom(0, max) / max;
 		float B = getRandom(0, max) / max;
-		float e = getRandom(0.90 * max, max) / max; //value between 0.57 and 1
-		std::cout << e << '\n';
+		float e = getRandom(0.56 * max, 0.67 * max) / max; //value between a range under 1
 
 		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), e);
 		points.push_back(particle);
