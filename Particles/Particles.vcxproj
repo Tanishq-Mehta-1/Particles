@@ -141,12 +141,12 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="source.cpp" />
-    <None Include="vertexShader.glsl">
+    <None Include="vertexShader.vert">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentShader.glsl" />
+    <None Include="fragmentShader.frag" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="particle.h" />

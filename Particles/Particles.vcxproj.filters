@@ -53,10 +53,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentShader.glsl">
+    <None Include="fragmentShader.frag">
       <Filter>Shader Code</Filter>
     </None>
-    <None Include="vertexShader.glsl">
+    <None Include="vertexShader.vert">
       <Filter>Shader Code</Filter>
     </None>
   </ItemGroup>

@@ -20,8 +20,8 @@ void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& po
 void spawnParticles(int no_of_particles, std::vector<Particle>& points);
 float getRandom(float min, float max);
 
-int width = 800;
-int height = 800;
+int width = 1440;
+int height = 900;
 float deltaTime{ 0.0f };
 float currentTime = { 0.0f };
 float lastTime = { 0.0f };
@@ -33,6 +33,8 @@ unsigned int circleVAO, circleVBO; //vertex and array buffers
 int main()
 {
 	int particleNum = 400; //works well till , with no overlap till ~300
+
+
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
 	ImGuiIO& io = ImGui::GetIO(); //getting the io object
@@ -41,15 +43,16 @@ int main()
 	spawnParticles(particleNum, points);
 
 	//setting up shaders
-	Shader objectShader{ "vertexShader.glsl", "fragmentShader.glsl" };
+	Shader objectShader{ "vertexShader.vert", "fragmentShader.frag" };
 
 	//configurable parameters and windows
 	glm::vec3 bgCol(0.0f);
 	float acc_x{ 0.0f };
 	float acc_y{ -9.8f };
+	float e{ 0.8f };
 	int prevNum{ particleNum };
-	bool particleWindow{ true };
-
+	bool wave_motion{ false };
+	bool suspended_motion{ false };
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -57,7 +60,7 @@ int main()
 		currentTime = glfwGetTime();
 		deltaTime = currentTime - lastTime;
 
-		prevNum = particleNum; 
+		prevNum = particleNum;
 		//inputs
 		processInput(window);
 
@@ -66,37 +69,56 @@ int main()
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 
+		float sidebarWidth{};
+		//Side bar
 		{
-			static float f = 0.0f;
+			ImGui::Begin("Sidebar", nullptr,
+				ImGuiWindowFlags_NoMove 
+			);
+			ImGui::ColorPicker3("clear color", (float*)&bgCol);
 
-			ImGui::Begin("Main Control");                      
-
-			ImGui::ColorEdit3("clear color", (float*)&bgCol); 
-			ImGui::Text("Configuration menus: ");
-			ImGui::Checkbox("Particles", &particleWindow);
-			
-
-
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-			ImGui::End();
-		}
-
-		if (particleWindow)
-		{
-			ImGui::Begin("Particles", &particleWindow);
-
-			ImGui::Text("Acceleration: ");
+			ImGui::Text("Particles: ");
 			ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
 			ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
+			ImGui::Checkbox("Wave-like behaviour", &wave_motion);
+			ImGui::Checkbox("Chaos", &suspended_motion);
 			ImGui::SliderInt("Number of Particle", &particleNum, 0, 1000);
+			ImGui::SliderFloat("Restitution Coefficient", &e, 0.0f, 1.0f);
 
+			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+			sidebarWidth = ImGui::GetItemRectSize().x;
 			ImGui::End();
 		}
-		
-		//background colour
+
+		//manually positioning the scene window
+		ImGui::SetNextWindowPos(ImVec2(sidebarWidth, 0), ImGuiCond_Always);
+		ImGui::SetNextWindowSize(ImVec2(io.DisplaySize.x - sidebarWidth, io.DisplaySize.y));
+
+		//scene window
+		ImGui::Begin("Scene", nullptr,
+			ImGuiWindowFlags_NoTitleBar |
+			ImGuiWindowFlags_NoResize |
+			ImGuiWindowFlags_NoMove |
+			ImGuiWindowFlags_NoCollapse
+		);
+
+		ImVec2 scenePos = ImGui::GetWindowPos();
+		ImVec2 sceneSize = ImGui::GetWindowSize();
+		ImGui::End();
+
+		glViewport(sidebarWidth, io.DisplaySize.y - scenePos.y - sceneSize.y, sceneSize.x, sceneSize.y);
+		glScissor(sidebarWidth, io.DisplaySize.y - scenePos.y - sceneSize.y, sceneSize.x, sceneSize.y);
+		glEnable(GL_SCISSOR_TEST);
+
+			//background colour
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		//Render ImGui menus
+		ImGui::Render();
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+		//scene render
 		handleParticleNum(prevNum, particleNum, points);
 
 		//handle collisions
@@ -105,16 +127,32 @@ int main()
 				handleParticleCollisions(points[i], points[j]);
 		}
 
+		//calculate only once
+		if (wave_motion)
+		{
+			acc_x = sin(currentTime * 0.90) * 10.0f;
+			acc_y = -9.8f;
+			e = 0.636;
+		}
+
+		if (suspended_motion)
+		{
+			acc_x = getRandom(0, 10.0f) - 5.0f;
+			acc_y = getRandom(0, 10.0f) - 5.0f;
+			e = 1.0f;
+		}
+
+		//update and then draw
 		for (int i = 0; i < particleNum; i++)
 		{
 			points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
+			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window);
 			points[i].drawCircle(circleVAO, objectShader, res);
-			//extremely slow process, since we are sending gpu information for every particle, can be made better using 
+			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
 
-		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		glDisable(GL_SCISSOR_TEST);
 
 		glfwPollEvents();
 		glfwSwapBuffers(window);
@@ -200,6 +238,10 @@ int setup(int width, int height, GLFWwindow*& window) {
 	}
 
 	glViewport(0, 0, width, height);
+	
+	//enabling alpha
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	//generate the circle vertices
 	//thus now, we just use these vertices to create a circle
@@ -208,7 +250,7 @@ int setup(int width, int height, GLFWwindow*& window) {
 	return 0;
 }
 
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle> &points)
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points)
 {
 	//handle spawns
 	if (prevNum != particleNum) {
@@ -220,6 +262,19 @@ void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle> &po
 		else //spawn
 			spawnParticles(particleNum - prevNum, points);
 	}
+
+
+	//handle barely visible particles
+	auto it = points.begin();
+	while (it != points.end())
+	{
+
+		if ((*it).alpha <= 0.1f)
+			it = points.erase(it);
+		else
+			it++;
+	}
+	particleNum = points.size();
 }
 
 void ImGui_Setup(GLFWwindow* window)
@@ -238,7 +293,7 @@ void ImGui_Setup(GLFWwindow* window)
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void spawnParticles(int no_of_particles, std::vector<Particle> &points )
+void spawnParticles(int no_of_particles, std::vector<Particle>& points)
 {
 	for (int i = 0; i < no_of_particles; i++)
 	{
@@ -255,9 +310,9 @@ void spawnParticles(int no_of_particles, std::vector<Particle> &points )
 		float R = getRandom(0, max) / max;
 		float G = getRandom(0, max) / max;
 		float B = getRandom(0, max) / max;
-		float e = getRandom(0.56 * max, 0.67 * max) / max; //value between a range under 1
+		float alpha = getRandom(0, max) / max;
 
-		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), e);
+		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), 1.0f, alpha);
 		points.push_back(particle);
 	}
 }
