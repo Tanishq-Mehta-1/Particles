@@ -19,13 +19,37 @@
     <Filter Include="Dependencies">
       <UniqueIdentifier>{17defddd-e9e2-45ab-b02f-5a6a4dcaff51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Externals">
+      <UniqueIdentifier>{0f002fcb-50ed-42c0-a1d0-5e2771de15af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="glad.c">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_draw.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_demo.cpp">
+      <Filter>Source Files\Externals</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_glfw.cpp">
+      <Filter>Source Files\Externals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

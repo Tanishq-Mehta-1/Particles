@@ -186,5 +186,4 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		}
 	}
 }
-
 #endif
