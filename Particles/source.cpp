@@ -46,13 +46,15 @@ int main()
 	Shader objectShader{ "vertexShader.vert", "fragmentShader.frag" };
 
 	//configurable parameters and windows
-	glm::vec3 bgCol(0.0f);
+	glm::vec3 particleColor;
 	float acc_x{ 0.0f };
 	float acc_y{ -9.8f };
 	float e{ 0.8f };
 	int prevNum{ particleNum };
 	bool wave_motion{ false };
-	bool suspended_motion{ false };
+	bool chaos{ false };
+	bool mirrorX{ false };
+	bool velocity_colour{ true };
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -72,20 +74,45 @@ int main()
 		float sidebarWidth{};
 		//Side bar
 		{
+			static int item_current = 0; //stores the index of selected item
+			const char* items[] = {"None", "Wave", "Chaos"};
+			bool* options[] = {&wave_motion, &chaos };
+
 			ImGui::Begin("Sidebar", nullptr,
 				ImGuiWindowFlags_NoMove 
 			);
-			ImGui::ColorPicker3("clear color", (float*)&bgCol);
+			ImGui::Checkbox("Enable Velocity-based Colouring", &velocity_colour);
+			if(!velocity_colour)
+				ImGui::ColorPicker3("clear color", (float*)&particleColor);
 
-			ImGui::Text("Particles: ");
+			ImGui::Text("\nParticles: ");
 			ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
 			ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
-			ImGui::Checkbox("Wave-like behaviour", &wave_motion);
-			ImGui::Checkbox("Chaos", &suspended_motion);
 			ImGui::SliderInt("Number of Particle", &particleNum, 0, 1000);
 			ImGui::SliderFloat("Restitution Coefficient", &e, 0.0f, 1.0f);
+			ImGui::Checkbox("Mirror horizontal", &mirrorX);
 
-			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+			//dropdown menu
+			ImGui::Text("Some pre-configured scenes:");
+			if (ImGui::BeginCombo("Pre-configured Scenes", items[item_current])) //second param shows the previewed item
+			{
+				for (int i = 0; i < IM_ARRAYSIZE(items); i++) {
+
+					bool is_selected = (item_current == i);
+					if (ImGui::Selectable(items[i], is_selected))
+						item_current = i;
+
+					if (is_selected) //what to do if selected
+						ImGui::SetItemDefaultFocus(); //helper function that highlights this option the next time you open the dropdown menu
+					
+				}
+				ImGui::EndCombo();
+			}
+		
+			for (int i = 1; i < IM_ARRAYSIZE(items); i++)
+				*options[i-1] = (item_current == i);
+
+			ImGui::Text("\nApplication average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 			sidebarWidth = ImGui::GetItemRectSize().x;
 			ImGui::End();
 		}
@@ -110,7 +137,8 @@ int main()
 		glScissor(sidebarWidth, io.DisplaySize.y - scenePos.y - sceneSize.y, sceneSize.x, sceneSize.y);
 		glEnable(GL_SCISSOR_TEST);
 
-			//background colour
+		//background colour
+		glm::vec3 bgCol(0.0f);
 		glClearColor(bgCol.x, bgCol.y, bgCol.z, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
@@ -127,7 +155,7 @@ int main()
 				handleParticleCollisions(points[i], points[j]);
 		}
 
-		//calculate only once
+		//pre-configured scenes
 		if (wave_motion)
 		{
 			acc_x = sin(currentTime * 0.90) * 10.0f;
@@ -135,7 +163,7 @@ int main()
 			e = 0.636;
 		}
 
-		if (suspended_motion)
+		if (chaos)
 		{
 			acc_x = getRandom(0, 10.0f) - 5.0f;
 			acc_y = getRandom(0, 10.0f) - 5.0f;
@@ -145,9 +173,16 @@ int main()
 		//update and then draw
 		for (int i = 0; i < particleNum; i++)
 		{
+			if (i % 2 == 0 && mirrorX)
+				acc_y *= -1;
+
+			if (!velocity_colour) {
+				points[i].colour = particleColor;
+			}
+
 			points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
-			points[i].update(deltaTime, window);
+			points[i].update(deltaTime, window, velocity_colour);
 			points[i].drawCircle(circleVAO, objectShader, res);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}

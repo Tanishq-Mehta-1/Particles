@@ -63,10 +63,11 @@ public:
 		glBindVertexArray(0);
 	}
 
-	void update(float deltaTime, GLFWwindow* window)
+	void update(float deltaTime, GLFWwindow* window, bool velocity_colouring)
 	{
 		handleBoundaryCollision(window);
-		enableVelocityColouring();
+		if(velocity_colouring)
+			enableVelocityColouring();
 
 		//drag calculations
 		glm::vec2 a_drag;
