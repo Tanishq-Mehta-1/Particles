@@ -27,12 +27,12 @@ float currentTime = { 0.0f };
 float lastTime = { 0.0f };
 GLFWwindow* window{};
 
-int res = 30;
+int res = 20;
 unsigned int circleVAO, circleVBO; //vertex and array buffers
 
 int main()
 {
-	int particleNum = 400; //works well till , with no overlap till ~300
+	int particleNum = 100; //works well till , with no overlap till ~300
 
 
 	if (setup(width, height, window))
@@ -48,13 +48,16 @@ int main()
 	//configurable parameters and windows
 	glm::vec3 particleColor;
 	float acc_x{ 0.0f };
-	float acc_y{ -9.8f };
+	float acc_y{ 0.0f };
 	float e{ 0.8f };
 	int prevNum{ particleNum };
 	bool wave_motion{ false };
 	bool chaos{ false };
+	bool circle{ false };
+	bool gravity{ false };
 	bool mirrorX{ false };
 	bool velocity_colour{ true };
+
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -75,8 +78,8 @@ int main()
 		//Side bar
 		{
 			static int item_current = 0; //stores the index of selected item
-			const char* items[] = {"None", "Wave", "Chaos"};
-			bool* options[] = {&wave_motion, &chaos };
+			const char* items[] = {"None", "Wave", "Chaos", "Circle", "Gravity (lowers fps)"};
+			bool* options[] = {&wave_motion, &chaos, &circle, &gravity };
 
 			ImGui::Begin("Sidebar", nullptr,
 				ImGuiWindowFlags_NoMove 
@@ -86,8 +89,11 @@ int main()
 				ImGui::ColorPicker3("clear color", (float*)&particleColor);
 
 			ImGui::Text("\nParticles: ");
-			ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
-			ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
+			if (!gravity)
+			{
+				ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
+				ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
+			}
 			ImGui::SliderInt("Number of Particle", &particleNum, 0, 1000);
 			ImGui::SliderFloat("Restitution Coefficient", &e, 0.0f, 1.0f);
 			ImGui::Checkbox("Mirror horizontal", &mirrorX);
@@ -104,7 +110,6 @@ int main()
 
 					if (is_selected) //what to do if selected
 						ImGui::SetItemDefaultFocus(); //helper function that highlights this option the next time you open the dropdown menu
-					
 				}
 				ImGui::EndCombo();
 			}
@@ -113,6 +118,7 @@ int main()
 				*options[i-1] = (item_current == i);
 
 			ImGui::Text("\nApplication average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
+			//ImGui::Text("\nParticles generated: %d", points.size());
 			sidebarWidth = ImGui::GetItemRectSize().x;
 			ImGui::End();
 		}
@@ -152,7 +158,11 @@ int main()
 		//handle collisions
 		for (int i = 0; i < particleNum; i++) {
 			for (int j = i + 1; j < particleNum; j++)
+			{
+				if(gravity)
+					handleGravity(points[i], points[j]);
 				handleParticleCollisions(points[i], points[j]);
+			}
 		}
 
 		//pre-configured scenes
@@ -180,10 +190,35 @@ int main()
 				points[i].colour = particleColor;
 			}
 
-			points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
+			if (circle)
+			{
+				//for decent orbits, centrigufe must be greater than tangential (2,20) gives really good orbits
+				float tangential_strength = 1.0f;
+				float centrifugal_strength = 10.0f;
+
+				//revolve around the viewport centre
+				glm::vec2 posVec{ points[i].position }; //can really just use the position vector since the origin is the center
+				
+				//can obtain a tangent vector using a rotation matrix
+				//for 2d space, the vector is essentially (-vec.y, vec.x)
+				glm::vec2 tangent_acc{ -posVec.y, posVec.x };
+				if (length(tangent_acc) > 0.0f)
+					tangent_acc = glm::normalize(tangent_acc);
+
+				//for circular motion, uniform, you really just need a centrifugal force i.e acceleration towards the centre
+				glm::vec2 centrifugal_acc = glm::length(posVec) == 0.0f ? glm::vec2(0.0f) : -glm::normalize(posVec);
+
+				acc_x = centrifugal_acc.x * centrifugal_strength + tangential_strength * tangent_acc.x;
+				acc_y = centrifugal_acc.y * centrifugal_strength + tangential_strength * tangent_acc.y;
+			}
+
+			if(!gravity)
+				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour);
 			points[i].drawCircle(circleVAO, objectShader, res);
+			if(gravity)
+				points[i].acceleration = glm::vec2(0.0f);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
 
@@ -333,9 +368,9 @@ void spawnParticles(int no_of_particles, std::vector<Particle>& points)
 	for (int i = 0; i < no_of_particles; i++)
 	{
 		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
-		float pos_y = getRandom(0, 300);
+		float pos_y = getRandom(0, height) - height / 2;
 		float pos_x = getRandom(0, width) - width / 2;
-		float r = getRandom(7, 10); //works better with smaller radii
+		float r = getRandom(4, 8); //works better with smaller radii
 
 		/*float pos_y = i * 100.0f;
 		float pos_x = 0;

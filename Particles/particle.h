@@ -23,9 +23,9 @@ public:
 	glm::vec2 position;
 
 	float restitution_coefficient{ 1.0f };
-	glm::vec2 velocity{ 0.0f, -100.0f };
+	glm::vec2 velocity{ 0.0f, 0.0f };
 	float pixelsPerMeter{ 300.0f / 9.8f };
-	glm::vec2 acceleration{ 0.0f, -9.8f * pixelsPerMeter }; 
+	glm::vec2 acceleration{ 0.0f, 0.0f }; 
 	//remove pixelsPerMeter for slowmo haha
 
 	Particle(float r, glm::vec2 p, GLFWwindow* window, glm::vec3 col, float e, float alph) {
@@ -33,7 +33,7 @@ public:
 		position = p;
 		colour = col;
 		restitution_coefficient = e;
-		mass = 4.0f / 3.0f * 3.14 * radius * radius * radius * density;
+		mass =  3.14 * radius * radius * density; //rendered as disks, not spheres
 		alpha = alph;
 
 		glfwGetWindowSize(window, &window_width, &window_height);
@@ -70,11 +70,11 @@ public:
 			enableVelocityColouring();
 
 		//drag calculations
-		glm::vec2 a_drag;
+		glm::vec2 a_drag = glm::vec2(0.0f);
 		calculateDrag(a_drag);
 		velocity += a_drag * deltaTime;
 
-		float maxVelocity{ 12000.0f }; //doesnt tunnel till 18k, but 12k looks good
+		float maxVelocity{ 8000.0f }; //doesnt tunnel till 18k, but 12k looks good
 		velocity += acceleration * deltaTime;
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
 
@@ -160,7 +160,7 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 
 		//normalize(vec) = vec / length(vec), which is NaN for 0 vectors
 		glm::vec2 relative_velocity = p1.velocity - p2.velocity;
-		glm::vec2 normal = distance == 0 ? glm::normalize(relative_velocity) : glm::normalize(delta);
+		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f) : glm::normalize(delta);
 
 		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
 		
@@ -183,9 +183,26 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		if (interpenetration > 0.0f)
 		{
 			glm::vec2 offset = (interpenetration / (m1 + m2)) * normal;
-			p1.position += offset * m2;
-			p2.position -= offset * m1;
+			p1.position += offset * m2 ;
+			p2.position -= offset * m1 ;
 		}
 	}
+}
+
+void handleGravity(Particle& p1, Particle& p2)
+{
+	glm::vec2 distance = p1.position - p2.position; //already the squared distance
+
+	float softening = 10.0f;
+	float r2 = dot(distance, distance) + softening * softening;
+	if (r2 > 400.0f * 400.0f || r2 == 0.01)
+		return;
+	glm::vec2 dir = (r2 == 0) ? glm::vec2(0.0f) : glm::normalize(distance);
+
+	float m1 = p1.mass;
+	float m2 = p2.mass;
+	float G = 6.6743 * pow(10,-1);
+	p1.acceleration -= G * (m2 / r2) * p1.pixelsPerMeter * p1.pixelsPerMeter * dir;
+	p2.acceleration += G * (m1 / r2) * p2.pixelsPerMeter * p2.pixelsPerMeter * dir;
 }
 #endif
