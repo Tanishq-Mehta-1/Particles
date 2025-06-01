@@ -155,7 +155,7 @@ int main()
 		//scene render
 		handleParticleNum(prevNum, particleNum, points);
 
-		//handle collisions
+		//handle collisions and gravity (for n^2 algo)
 		for (int i = 0; i < particleNum; i++) {
 			for (int j = i + 1; j < particleNum; j++)
 			{

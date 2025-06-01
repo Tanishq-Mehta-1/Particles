@@ -33,7 +33,7 @@ public:
 		position = p;
 		colour = col;
 		restitution_coefficient = e;
-		mass =  3.14 * radius * radius * density; //rendered as disks, not spheres
+		mass =  4 /3 * 3.14 * radius * radius * radius * density; //rendered as disks, not spheres
 		alpha = alph;
 
 		glfwGetWindowSize(window, &window_width, &window_height);
@@ -197,12 +197,13 @@ void handleGravity(Particle& p1, Particle& p2)
 	float r2 = dot(distance, distance) + softening * softening;
 	if (r2 > 400.0f * 400.0f || r2 == 0.01)
 		return;
-	glm::vec2 dir = (r2 == 0) ? glm::vec2(0.0f) : glm::normalize(distance);
+	glm::vec2 dir = (r2 == 0) ? glm::vec2(0.0f) : distance / sqrt(r2);
 
 	float m1 = p1.mass;
 	float m2 = p2.mass;
-	float G = 6.6743 * pow(10,-1);
-	p1.acceleration -= G * (m2 / r2) * p1.pixelsPerMeter * p1.pixelsPerMeter * dir;
-	p2.acceleration += G * (m1 / r2) * p2.pixelsPerMeter * p2.pixelsPerMeter * dir;
+	float G_mod = 6.6743 * pow(10,-1) * p1.pixelsPerMeter;
+
+	p1.acceleration -= G_mod * (m2 / r2)  * dir;
+	p2.acceleration += G_mod * (m1 / r2) * dir;
 }
 #endif
