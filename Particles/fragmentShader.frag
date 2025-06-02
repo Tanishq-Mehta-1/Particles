@@ -10,5 +10,5 @@ float random (vec2 st);
 
 void main()
 {
-	FragColor = vec4(aCol * fragPos, alpha);
+	FragColor = vec4(aCol, alpha);
 }

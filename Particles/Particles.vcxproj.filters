@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
@@ -19,37 +15,37 @@
     <Filter Include="Dependencies">
       <UniqueIdentifier>{17defddd-e9e2-45ab-b02f-5a6a4dcaff51}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Externals">
-      <UniqueIdentifier>{0f002fcb-50ed-42c0-a1d0-5e2771de15af}</UniqueIdentifier>
+    <Filter Include="Source Files\C/CPP files">
+      <UniqueIdentifier>{4f99b74d-45c9-4851-b0b3-3cd6b5a74709}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="glad.c">
-      <Filter>Source Files\Externals</Filter>
+    <ClCompile Include="Externals\glad.c">
+      <Filter>Source Files\C/CPP files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui.cpp">
-      <Filter>Source Files\Externals</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_opengl3.cpp">
-      <Filter>Source Files\Externals</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_draw.cpp">
-      <Filter>Source Files\Externals</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp">
-      <Filter>Source Files\Externals</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp">
-      <Filter>Source Files\Externals</Filter>
+      <Filter>Source Files\C/CPP files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_demo.cpp">
-      <Filter>Source Files\Externals</Filter>
+      <Filter>Source Files\C/CPP files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_draw.cpp">
+      <Filter>Source Files\C/CPP files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp">
+      <Filter>Source Files\C/CPP files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp">
+      <Filter>Source Files\C/CPP files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_glfw.cpp">
-      <Filter>Source Files\Externals</Filter>
+      <Filter>Source Files\C/CPP files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_opengl3.cpp">
+      <Filter>Source Files\C/CPP files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="particle.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

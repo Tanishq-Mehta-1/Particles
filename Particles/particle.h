@@ -116,7 +116,7 @@ private:
 		}
 	}
 
-	float Green_Speed{ 250.0f  }, Red_Speed{ 500.0f }, White_Speed{ 12000.0f};
+	float Green_Speed{ 375.0f  }, Red_Speed{ 750.0f }, White_Speed{ 12000.0f};
 	void enableVelocityColouring()
 	{
 		float speed = glm::length(velocity);
@@ -160,7 +160,7 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 
 		//normalize(vec) = vec / length(vec), which is NaN for 0 vectors
 		glm::vec2 relative_velocity = p1.velocity - p2.velocity;
-		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f) : glm::normalize(delta);
+		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f) : delta / distance;
 
 		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
 		

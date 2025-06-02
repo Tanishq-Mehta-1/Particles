@@ -16,12 +16,12 @@ void processInput(GLFWwindow* window);
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO);
 void ImGui_Setup(GLFWwindow* window);
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points);
-void spawnParticles(int no_of_particles, std::vector<Particle>& points);
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, int sizes[2]);
+void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size_min = 5, int size_max = 7);
 float getRandom(float min, float max);
 
-int width = 1440;
-int height = 900;
+int width = 1920;
+int height = 1080;
 float deltaTime{ 0.0f };
 float currentTime = { 0.0f };
 float lastTime = { 0.0f };
@@ -32,8 +32,7 @@ unsigned int circleVAO, circleVBO; //vertex and array buffers
 
 int main()
 {
-	int particleNum = 100; //works well till , with no overlap till ~300
-
+	int particleNum = 300; 
 
 	if (setup(width, height, window))
 		std::cout << "ERROR::SETUP\n";
@@ -50,6 +49,8 @@ int main()
 	float acc_x{ 0.0f };
 	float acc_y{ 0.0f };
 	float e{ 0.8f };
+	int particleSizes[2]{ 5,7 };
+	float waveStrength{ 10.0f };
 	int prevNum{ particleNum };
 	bool wave_motion{ false };
 	bool chaos{ false };
@@ -94,9 +95,22 @@ int main()
 				ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
 				ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
 			}
-			ImGui::SliderInt("Number of Particle", &particleNum, 0, 1000);
+			float particles_max = gravity ? 2000 : 4000;
+			if (gravity && particleNum > 2000)
+				particleNum = 2000;
+
+			ImGui::SliderInt("Number of Particle", &particleNum, 0, particles_max);
 			ImGui::SliderFloat("Restitution Coefficient", &e, 0.0f, 1.0f);
-			ImGui::Checkbox("Mirror horizontal", &mirrorX);
+			ImGui::InputInt2("Particle Sizes:", particleSizes);
+
+			//size check
+			if (particleSizes[0] > particleSizes[1])
+				particleSizes[0] = particleSizes[1];
+			
+			particleSizes[0] = glm::clamp(particleSizes[0], 0, 30);
+			particleSizes[1] = glm::clamp(particleSizes[1], 0, 30);
+
+			//ImGui::Checkbox("Mirror horizontal", &mirrorX);
 
 			//dropdown menu
 			ImGui::Text("Some pre-configured scenes:");
@@ -116,6 +130,9 @@ int main()
 		
 			for (int i = 1; i < IM_ARRAYSIZE(items); i++)
 				*options[i-1] = (item_current == i);
+
+			if(wave_motion)
+				ImGui::SliderFloat("Wave Strength", &waveStrength, 1, 15);
 
 			ImGui::Text("\nApplication average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
 			//ImGui::Text("\nParticles generated: %d", points.size());
@@ -153,7 +170,7 @@ int main()
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		//scene render
-		handleParticleNum(prevNum, particleNum, points);
+		handleParticleNum(prevNum, particleNum, points, particleSizes);
 
 		//handle collisions and gravity (for n^2 algo)
 		for (int i = 0; i < particleNum; i++) {
@@ -161,6 +178,7 @@ int main()
 			{
 				if(gravity)
 					handleGravity(points[i], points[j]);
+
 				handleParticleCollisions(points[i], points[j]);
 			}
 		}
@@ -168,7 +186,7 @@ int main()
 		//pre-configured scenes
 		if (wave_motion)
 		{
-			acc_x = sin(currentTime * 0.90) * 10.0f;
+			acc_x = sin(currentTime * 0.90) * waveStrength;
 			acc_y = -9.8f;
 			e = 0.636;
 		}
@@ -320,10 +338,22 @@ int setup(int width, int height, GLFWwindow*& window) {
 	return 0;
 }
 
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points)
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, int sizes[2])
 {
+	static int prevSize[2]{ sizes[0], sizes[1] }; 
+
+	if (prevSize[0] != sizes[0] || prevSize[1] != sizes[1])
+	{
+		//remove all points
+		for (int i = 0; i < particleNum; i++)
+			points.pop_back();
+		//respawn all points
+		spawnParticles(particleNum, points, sizes[0], sizes[1]);
+
+		prevSize[0] = sizes[0]; prevSize[1] = sizes[1];
+	}
 	//handle spawns
-	if (prevNum != particleNum) {
+	else if (prevNum != particleNum) {
 
 		//spawn or despawn points
 		if (prevNum > particleNum) //despawn
@@ -332,19 +362,6 @@ void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& po
 		else //spawn
 			spawnParticles(particleNum - prevNum, points);
 	}
-
-
-	//handle barely visible particles
-	auto it = points.begin();
-	while (it != points.end())
-	{
-
-		if ((*it).alpha <= 0.1f)
-			it = points.erase(it);
-		else
-			it++;
-	}
-	particleNum = points.size();
 }
 
 void ImGui_Setup(GLFWwindow* window)
@@ -363,24 +380,22 @@ void ImGui_Setup(GLFWwindow* window)
 	ImGui_ImplOpenGL3_Init("#version 460");
 }
 
-void spawnParticles(int no_of_particles, std::vector<Particle>& points)
+void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size_min, int size_max)
 {
 	for (int i = 0; i < no_of_particles; i++)
 	{
 		//rand() - rand_max/2 to generate pos and negative numbers in the range [-rand_max/2 , rand_max/2]
 		float pos_y = getRandom(0, height) - height / 2;
 		float pos_x = getRandom(0, width) - width / 2;
-		float r = getRandom(4, 8); //works better with smaller radii
 
-		/*float pos_y = i * 100.0f;
-		float pos_x = 0;
-		float r = 20.0f;*/
+		float r = getRandom(size_min, size_max); 
+
 
 		float max{ 10000 };
 		float R = getRandom(0, max) / max;
 		float G = getRandom(0, max) / max;
 		float B = getRandom(0, max) / max;
-		float alpha = getRandom(0, max) / max;
+		float alpha = getRandom(0.2 * max, max) / max;
 
 		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), 1.0f, alpha);
 		points.push_back(particle);
