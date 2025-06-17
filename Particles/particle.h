@@ -206,4 +206,5 @@ void handleGravity(Particle& p1, Particle& p2)
 	p1.acceleration -= G_mod * (m2 / r2)  * dir;
 	p2.acceleration += G_mod * (m1 / r2) * dir;
 }
+
 #endif
