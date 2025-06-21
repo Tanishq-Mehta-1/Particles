@@ -60,7 +60,6 @@ public:
 
 		//draw call
 		glDrawArrays(GL_TRIANGLE_FAN, 0, res + 2);
-
 		glBindVertexArray(0);
 	}
 

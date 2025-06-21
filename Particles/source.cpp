@@ -64,7 +64,7 @@ int main()
 	std::array<int, 2> particleSizes{ 5,7 };
 	std::array<int, 2> prevSizes{ 5,7 };
 
-
+	glEnable(GL_PROGRAM_POINT_SIZE);
 	while (!glfwWindowShouldClose(window))
 	{
 		lastTime = currentTime;
