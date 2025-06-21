@@ -60,6 +60,7 @@ int main()
 	bool astronomical{ false };
 	bool mirrorX{ false };
 	bool velocity_colour{ true };
+	bool collision_colour{ false };
 	std::array<int, 2> particleSizes{ 5,7 };
 	std::array<int, 2> prevSizes{ 5,7 };
 
@@ -90,7 +91,9 @@ int main()
 				ImGuiWindowFlags_NoMove
 			);
 			ImGui::Checkbox("Enable Velocity-based Colouring", &velocity_colour);
-			if (!velocity_colour)
+			ImGui::Checkbox("Enable Collision-based Colouring", &collision_colour);
+
+			if (!velocity_colour && !collision_colour)
 				ImGui::ColorPicker3("clear color", (float*)&particleColor);
 
 			ImGui::Text("\nParticles: ");
@@ -211,7 +214,7 @@ int main()
 			if (i % 2 == 0 && mirrorX)
 				acc_y *= -1;
 
-			if (!velocity_colour) {
+			if (!velocity_colour && !collision_colour) {
 				points[i].colour = particleColor;
 			}
 
@@ -240,7 +243,7 @@ int main()
 			if (!astronomical)
 				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
-			points[i].update(deltaTime, window, velocity_colour);
+			points[i].update(deltaTime, window, velocity_colour, collision_colour);
 			points[i].drawCircle(circleVAO, objectShader, res);
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);

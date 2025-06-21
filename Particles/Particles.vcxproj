@@ -147,6 +147,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\glad 2\src\glad.c" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_demo.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_draw.cpp" />
@@ -154,7 +155,6 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="Externals\glad.c" />
     <ClCompile Include="source.cpp" />
     <None Include="vertexShader.vert">
       <FileType>Document</FileType>

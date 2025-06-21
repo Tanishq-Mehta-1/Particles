@@ -21,6 +21,7 @@ public:
 	float alpha{ 1.0f };
 	glm::vec3 colour;
 	glm::vec2 position;
+	bool hasCollided{ false };
 
 	float restitution_coefficient{ 1.0f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
@@ -63,11 +64,14 @@ public:
 		glBindVertexArray(0);
 	}
 
-	void update(float deltaTime, GLFWwindow* window, bool velocity_colouring)
+	void update(float deltaTime, GLFWwindow* window, bool velocity_colouring, bool collision_colouring)
 	{
-		handleBoundaryCollision(window);
+		handleBoundaryCollision();
+
 		if(velocity_colouring)
 			enableVelocityColouring();
+		else if (collision_colouring)
+			enableCollisionColouring();
 
 		//drag calculations
 		glm::vec2 a_drag = glm::vec2(0.0f);
@@ -86,7 +90,7 @@ private:
 	int window_width;
 	int window_height;
 
-	void handleBoundaryCollision(GLFWwindow* window)
+	void handleBoundaryCollision()
 	{
 		float bound_y = window_height / 2;
 		float bound_x = window_width / 2;
@@ -127,6 +131,18 @@ private:
 			colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - Green_Speed) / Red_Speed - Green_Speed) + glm::vec3(0.0f, 1.0f, 0.0f);
 		else //speed >= 8k and <= 12k
 			colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - Red_Speed) / White_Speed - Red_Speed) + glm::vec3(1.0f, 0.0f, 0.0f);
+	}
+
+	void enableCollisionColouring() {
+		if (hasCollided)
+		{
+			colour = glm::vec3(1.0f, 0.0f, 0.0f);
+			hasCollided = false;
+		}
+		else {
+			colour.r -= 0.06f;
+			colour.b += 0.06f;
+		}
 	}
 
 	void calculateDrag(glm::vec2 &a_drag) const
@@ -186,6 +202,9 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 			p1.position += offset * m2 ;
 			p2.position -= offset * m1 ;
 		}
+
+		p1.hasCollided = true;
+		p2.hasCollided = true;
 	}
 }
 
