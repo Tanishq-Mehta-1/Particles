@@ -42,7 +42,7 @@ int main()
 	ImGuiIO& io = ImGui::GetIO(); //getting the io object
 
 	std::vector<Particle> points;
-	spawnParticles(particleNum, points,5,7);
+	spawnParticles(particleNum, points, 5, 7);
 
 	//setting up shaders
 	Shader objectShader{ "vertexShader.vert", "fragmentShader.frag" };
@@ -110,10 +110,10 @@ int main()
 			ImGui::SliderFloat("Restitution Coefficient", &e, 0.0f, 1.0f);
 			ImGui::InputInt("Minimum Size", &particleSizes[0]);
 			ImGui::InputInt("Maximum Size", &particleSizes[1]);
-			
+
 			//size check
 			if (particleSizes[0] > particleSizes[1])
-			particleSizes[0] = particleSizes[1];
+				particleSizes[0] = particleSizes[1];
 
 			particleSizes[0] = glm::clamp(particleSizes[0], 0, 30);
 			particleSizes[1] = glm::clamp(particleSizes[1], 0, 30);
@@ -244,11 +244,48 @@ int main()
 				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour, collision_colour);
-			points[i].drawCircle(circleVAO, objectShader, res);
+			//points[i].drawCircle(circleVAO, objectShader, res);
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
+
+		//generate Mesh
+		std::vector<glm::mat4> matrices;
+		for (auto& p : points) {
+			matrices.push_back(p.getModel());
+		}
+
+		//generate buffer
+		unsigned int buffer;
+		glGenBuffers(1, &buffer);
+		glBindBuffer(GL_ARRAY_BUFFER, buffer);
+		glBufferData(GL_ARRAY_BUFFER, matrices.size() * sizeof(glm::mat4), &matrices[0], GL_STATIC_DRAW);
+
+		glBindVertexArray(circleVAO);
+		std::size_t vec4Size = sizeof(glm::vec4);
+
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)0);
+		glEnableVertexAttribArray(4);
+		glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(1 * vec4Size));
+		glEnableVertexAttribArray(5);
+		glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(2 * vec4Size));
+		glEnableVertexAttribArray(6);
+		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(3 * vec4Size));
+
+		glVertexAttribDivisor(1, 1);
+		glVertexAttribDivisor(2, 1);
+		glVertexAttribDivisor(3, 1);
+		glVertexAttribDivisor(4, 1);
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		//draw call
+		glDrawArraysInstanced(GL_TRIANGLE_FAN, 0, res + 2, particleNum);
+		glBindVertexArray(0);
+
+
 
 		glDisable(GL_SCISSOR_TEST);
 
@@ -348,7 +385,7 @@ int setup(int width, int height, GLFWwindow*& window) {
 	return 0;
 }
 
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int,2> &sizes, std::array<int, 2> &prevSize)
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize)
 {
 	if (prevSize[0] != sizes[0] || prevSize[1] != sizes[1])
 	{

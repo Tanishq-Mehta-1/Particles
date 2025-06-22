@@ -48,15 +48,11 @@ public:
 		shader.setVec3("aCol", this->colour);
 		shader.setFloat("alpha", this->alpha);
 
-		glm::mat4 model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(position, 0.0f)); //the vector to translate by must be withing -1,1 to stay on screen
-		model = glm::scale(model, 2.0f * radius * glm::vec3(1.0));
-		shader.setMat4("model", model);
-
 		float width = window_width;
 		float height = window_height;
 		glm::mat4 projection = glm::ortho(-width / 2, width / 2, -height / 2, height / 2, -1.0f, 1.0f);
 		shader.setMat4("projection", projection);
+		shader.setMat4("model", modelMatrix);
 
 		//draw call
 		glDrawArrays(GL_TRIANGLE_FAN, 0, res + 2);
@@ -82,12 +78,22 @@ public:
 		velocity = glm::clamp(velocity, -glm::vec2(maxVelocity), glm::vec2(maxVelocity));
 
 		position += velocity * deltaTime;
+
+		//update model Mat
+		modelMatrix = glm::mat4(1.0f);
+		modelMatrix = glm::translate(modelMatrix, glm::vec3(position, 0.0f)); //the vector to translate by must be withing -1,1 to stay on screen
+		modelMatrix = glm::scale(modelMatrix, 2.0f * radius * glm::vec3(1.0));
+	}
+
+	glm::mat4 getModel() const {
+		return modelMatrix;
 	}
 
 private:
 
 	int window_width;
 	int window_height;
+	glm::mat4 modelMatrix{1.0f};
 
 	void handleBoundaryCollision()
 	{
