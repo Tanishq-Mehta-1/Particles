@@ -44,8 +44,8 @@ public:
 		shader.use();
 		glBindVertexArray(VAO);
 
-		shader.setVec3("aCol", this->colour);
-		shader.setFloat("alpha", this->alpha);
+		shader.setVec3("Col", this->colour);
+		shader.setFloat("alpha_in", this->alpha);
 
 		float width = window_width;
 		float height = window_height;

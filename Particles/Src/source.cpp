@@ -22,9 +22,10 @@ int height = 900;
 float deltaTime{ 0.0f };
 float currentTime = { 0.0f };
 float lastTime = { 0.0f };
+int maxParticles{ 5000 };
 GLFWwindow* window{};
 
-int res = 20;
+int res = 10;
 unsigned int circleVAO, circleVBO; //vertex and array buffers
 
 int main()
@@ -58,7 +59,25 @@ int main()
 	std::array<int, 2> particleSizes{ 5,7 };
 	std::array<int, 2> prevSizes{ 5,7 };
 
-	glEnable(GL_PROGRAM_POINT_SIZE);
+	//generating instanced arrays
+	glBindVertexArray(circleVAO);
+	//MVP
+	unsigned int Model_Projections;
+	glGenBuffers(1, &Model_Projections);
+	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
+
+	//Col
+	/*unsigned int Model_Projections;
+	glGenBuffers(1, &Model_Projections);
+	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);*/
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+
+	std::vector<glm::mat4> model_projections;
+
 	while (!glfwWindowShouldClose(window))
 	{
 		lastTime = currentTime;
@@ -96,7 +115,7 @@ int main()
 				ImGui::SliderFloat("X Acceleration", &acc_x, -10.0f, 10.0f);
 				ImGui::SliderFloat("Y Acceleration", &acc_y, -10.0f, 10.0f);
 			}
-			float particles_max = astronomical ? 2000 : 5000;
+			float particles_max = astronomical ? 2000 : maxParticles;
 			if (astronomical && particleNum > 2000)
 				particleNum = 2000;
 
@@ -238,11 +257,43 @@ int main()
 				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour, collision_colour);
-			points[i].drawCircle(circleVAO, objectShader, res);
+			//draw call
+			//points[i].drawCircle(circleVAO, objectShader, res);
+
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
+
+		int window_width, window_height;
+		glfwGetWindowSize(window, &window_width, &window_height);
+		glm::mat4 projection = glm::ortho(-window_width / 2.0f, window_width / 2.0f, -window_height / 2.0f, window_height / 2.0f, -1.0f, 1.0f);
+
+		model_projections.clear();
+
+		for (Particle& p : points) {
+			model_projections.push_back(projection * p.getModel());
+		}
+
+		//setup instanced arrays
+		objectShader.use();
+		glBindVertexArray(circleVAO);
+
+		//setup MVP
+		glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::mat4), model_projections.data());
+
+		//setting vertex attrib pointers
+		for (int i = 0;i < 4; i++) {
+			glEnableVertexAttribArray(1 + i);
+			glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
+			glVertexAttribDivisor(1 + i, 1);
+		}
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+		//draw call
+		glDrawArraysInstanced(GL_TRIANGLES, 0, res*3, particleNum);
+		glBindVertexArray(0);
 
 		glDisable(GL_SCISSOR_TEST);
 

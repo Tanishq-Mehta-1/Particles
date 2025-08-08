@@ -85,19 +85,24 @@ static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigne
 {
 	//generating vertices
 	std::vector<float> vertices;
-	vertices.push_back(center.x);
-	vertices.push_back(center.y);
 
-	for (int i = 0; i <= res; i++) {
-		glm::vec2 point;
-		float theta = 2.0f * PI * float(i) / float(res);
-		point.x = center.x + sin(theta) * 0.5;
-		point.y = center.y + cos(theta) * 0.5;
+	float radius = 0.5f;
+	for (int i = 0; i < res; i++) {
+		float theta1 = 2.0f * PI * float(i) / float(res);
+		float theta2 = 2.0f * PI * float(i + 1) / float(res);
 
-		vertices.push_back(point.x);
-		vertices.push_back(point.y);
+		// center
+		vertices.push_back(center.x);
+		vertices.push_back(center.y);
+
+		// first point on perimeter
+		vertices.push_back(center.x + sin(theta1) * radius);
+		vertices.push_back(center.y + cos(theta1) * radius);
+
+		// second point on perimeter
+		vertices.push_back(center.x + sin(theta2) * radius);
+		vertices.push_back(center.y + cos(theta2) * radius);
 	}
-	//points lie between -0.5 and 0.5
 
 	//draw the stuff
 	glGenBuffers(1, &VBO);

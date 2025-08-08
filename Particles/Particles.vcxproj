@@ -160,10 +160,10 @@
     <None Include="Src\Shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Headers\helpers.h" />
-    <ClInclude Include="Headers\particle.h" />
-    <ClInclude Include="Headers\physics_handler.h" />
-    <ClInclude Include="Headers\setup.h" />
+    <ClInclude Include="Src\Headers\helpers.h" />
+    <ClInclude Include="Src\Headers\particle.h" />
+    <ClInclude Include="Src\Headers\physics_handler.h" />
+    <ClInclude Include="Src\Headers\setup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
