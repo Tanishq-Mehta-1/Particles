@@ -3,31 +3,25 @@
 #include <ImGui/imgui_impl_opengl3.h>
 
 #include <shader.h>
-#include <random>
 #include <vector>
 #include <array>
-#include <glfw/glfw3.h>
 #include "particle.h"
+#include "physics_handler.h"
+#include "helpers.h"
+#include "setup.h"
 
 //for fluid like behaviour, increase the num of particles
 
 #define PI 3.14
 
-int setup(int width, int height, GLFWwindow*& window);
-void processInput(GLFWwindow* window);
-void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO);
-void ImGui_Setup(GLFWwindow* window);
 void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize);
 void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size_min, int size_max);
-float getRandom(float min, float max);
 
-int width = 1920;
-int height = 1080;
+int width = 1440;
+int height = 900;
 float deltaTime{ 0.0f };
 float currentTime = { 0.0f };
 float lastTime = { 0.0f };
-std::mt19937 rng(currentTime);
 GLFWwindow* window{};
 
 int res = 20;
@@ -37,7 +31,7 @@ int main()
 {
 	int particleNum = 300;
 
-	if (setup(width, height, window))
+	if (setup(width, height, window, res, circleVAO, circleVBO))
 		std::cout << "ERROR::SETUP\n";
 	ImGuiIO& io = ImGui::GetIO(); //getting the io object
 
@@ -244,48 +238,11 @@ int main()
 				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour, collision_colour);
-			//points[i].drawCircle(circleVAO, objectShader, res);
+			points[i].drawCircle(circleVAO, objectShader, res);
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
-
-		//generate Mesh
-		std::vector<glm::mat4> matrices;
-		for (auto& p : points) {
-			matrices.push_back(p.getModel());
-		}
-
-		//generate buffer
-		unsigned int buffer;
-		glGenBuffers(1, &buffer);
-		glBindBuffer(GL_ARRAY_BUFFER, buffer);
-		glBufferData(GL_ARRAY_BUFFER, matrices.size() * sizeof(glm::mat4), &matrices[0], GL_STATIC_DRAW);
-
-		glBindVertexArray(circleVAO);
-		std::size_t vec4Size = sizeof(glm::vec4);
-
-		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)0);
-		glEnableVertexAttribArray(4);
-		glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(1 * vec4Size));
-		glEnableVertexAttribArray(5);
-		glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(2 * vec4Size));
-		glEnableVertexAttribArray(6);
-		glVertexAttribPointer(4, 4, GL_FLOAT, GL_FALSE, 4 * vec4Size, (void*)(3 * vec4Size));
-
-		glVertexAttribDivisor(1, 1);
-		glVertexAttribDivisor(2, 1);
-		glVertexAttribDivisor(3, 1);
-		glVertexAttribDivisor(4, 1);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		//draw call
-		glDrawArraysInstanced(GL_TRIANGLE_FAN, 0, res + 2, particleNum);
-		glBindVertexArray(0);
-
-
 
 		glDisable(GL_SCISSOR_TEST);
 
@@ -299,89 +256,6 @@ int main()
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
-	return 0;
-}
-
-void processInput(GLFWwindow* window)
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
-}
-
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
-{
-	glViewport(0, 0, width, height);
-}
-
-static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO)
-{
-	//generating vertices
-	std::vector<float> vertices;
-	vertices.push_back(center.x);
-	vertices.push_back(center.y);
-
-	for (int i = 0; i <= res; i++) {
-		glm::vec2 point;
-		float theta = 2.0f * PI * float(i) / float(res);
-		point.x = center.x + sin(theta) * 0.5;
-		point.y = center.y + cos(theta) * 0.5;
-
-		vertices.push_back(point.x);
-		vertices.push_back(point.y);
-	}
-	//points lie between -0.5 and 0.5
-
-	//draw the stuff
-	glGenBuffers(1, &VBO);
-	glGenVertexArrays(1, &VAO);
-
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	glBindVertexArray(0);
-}
-
-int setup(int width, int height, GLFWwindow*& window) {
-
-	//setting up glfw
-	glfwInit();
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-	window = glfwCreateWindow(width, height, "First project!!!!", NULL, NULL);
-	if (!window)
-	{
-		std::cout << "Failed to create window\n";
-		glfwTerminate();
-		return 1;
-	}
-	glfwMakeContextCurrent(window);
-	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
-
-	ImGui_Setup(window);
-
-	//loading functions through GLAD
-	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-	{
-		std::cout << "Failed to initialise GLAD\n";
-		return 1;
-	}
-
-	glViewport(0, 0, width, height);
-
-	//enabling alpha
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-	//generate the circle vertices
-	//thus now, we just use these vertices to create a circle
-	circleGenerate(glm::vec2(0.0f), res, circleVAO, circleVBO);
-
 	return 0;
 }
 
@@ -409,22 +283,6 @@ void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& po
 	}
 }
 
-void ImGui_Setup(GLFWwindow* window)
-{
-	//setting up imgui
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ImGui::GetIO();
-	(void)io;
-
-	io.ConfigFlags != ImGuiConfigFlags_NavEnableKeyboard; //enable keyboard controls
-	io.ConfigFlags != ImGuiConfigFlags_NavEnableGamepad; //enable gamepad controls
-
-	ImGui::StyleColorsDark(); //sets the dark theme for windows
-	ImGui_ImplGlfw_InitForOpenGL(window, true); //setup the platform backend
-	ImGui_ImplOpenGL3_Init("#version 460");
-}
-
 void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size_min, int size_max)
 {
 	for (int i = 0; i < no_of_particles; i++)
@@ -444,15 +302,4 @@ void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size
 		Particle particle(r, glm::vec2(pos_x, pos_y), window, glm::vec3(R, G, B), 1.0f, alpha);
 		points.push_back(particle);
 	}
-}
-
-float getRandom(float min, float max) {
-	int offset = rng() % (int)(max - min + 1);
-
-	if (min > max)
-		return max;
-	else if (min == max)
-		return min;
-
-	return min + offset;
 }

@@ -5,10 +5,9 @@
 #include <glm/glm.hpp>
 #include <glad/glad.h>
 #include <shader.h>
+#include <GLFW/glfw3.h>
 
 //void handleParticleCollisions(Particle& p1, Particle& p2);
-void displayVec2(glm::vec2 vector);
-void displayVec3(glm::vec3 vector);
 
 class Particle
 {
@@ -25,7 +24,7 @@ public:
 
 	float restitution_coefficient{ 1.0f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
-	float pixelsPerMeter{ 300.0f / 9.8f };
+	float pixelsPerMeter{ 500 / 9.8f };
 	glm::vec2 acceleration{ 0.0f, 0.0f }; 
 	//remove pixelsPerMeter for slowmo haha
 
@@ -93,6 +92,7 @@ private:
 
 	int window_width;
 	int window_height;
+
 	glm::mat4 modelMatrix{1.0f};
 
 	void handleBoundaryCollision()
@@ -160,17 +160,6 @@ private:
 	}
 };
 
-//utility functions
-void displayVec2(glm::vec2 vector)
-{
-	std::cout << vector.x << ' ' << vector.y << '\n';
-}
-
-void displayVec3(glm::vec3 vector)
-{
-	std::cout << vector.x << ' ' << vector.y << ' ' << vector.z << '\n';
-}
-
 void handleParticleCollisions(Particle& p1, Particle& p2)
 {
 	glm::vec2 delta = p1.position - p2.position;
@@ -184,7 +173,7 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f) : delta / distance;
 
 		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
-		
+
 		if (velocity_along_normal > 0.0f) //the particles are separating
 			return;
 
@@ -192,7 +181,7 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		float m1 = p1.mass;
 		float m2 = p2.mass;
 		float e = std::min(p1.restitution_coefficient, p2.restitution_coefficient);
-		float j = -(1 + e) * velocity_along_normal / (1/m1 + 1/m2);
+		float j = -(1 + e) * velocity_along_normal / (1 / m1 + 1 / m2);
 		glm::vec2 impulse = j * normal;
 
 		p1.velocity += impulse / m1;
@@ -204,8 +193,8 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 		if (interpenetration > 0.0f)
 		{
 			glm::vec2 offset = (interpenetration / (m1 + m2)) * normal;
-			p1.position += offset * m2 ;
-			p2.position -= offset * m1 ;
+			p1.position += offset * m2;
+			p2.position -= offset * m1;
 		}
 
 		p1.hasCollided = true;
@@ -225,9 +214,9 @@ void handleGravity(Particle& p1, Particle& p2)
 
 	float m1 = p1.mass;
 	float m2 = p2.mass;
-	float G_mod = 6.6743 * pow(10,-1) * p1.pixelsPerMeter;
+	float G_mod = 6.6743 * pow(10, -1) * p1.pixelsPerMeter;
 
-	p1.acceleration -= G_mod * (m2 / r2)  * dir;
+	p1.acceleration -= G_mod * (m2 / r2) * dir;
 	p2.acceleration += G_mod * (m1 / r2) * dir;
 }
 

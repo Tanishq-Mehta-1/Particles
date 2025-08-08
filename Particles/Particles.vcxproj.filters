@@ -21,13 +21,13 @@
     <Filter Include="Source Files\Implementation Files\ImGUI">
       <UniqueIdentifier>{5f75ea76-9ad0-4503-b33a-fd9217d55842}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Header Files">
+      <UniqueIdentifier>{8bd3c277-278d-4f35-b7cc-38ba5f381c34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Externals\glad.c">
-      <Filter>Source Files\Implementation Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp">
       <Filter>Source Files\Implementation Files\ImGUI</Filter>
@@ -50,6 +50,9 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp">
       <Filter>Source Files\Implementation Files\ImGUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\OpenGL\glad 2\src\glad.c">
+      <Filter>Source Files\Implementation Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="fragmentShader.frag">
@@ -58,10 +61,19 @@
     <None Include="vertexShader.vert">
       <Filter>Shader Code</Filter>
     </None>
+    <None Include="helpers.h">
+      <Filter>Source Files\Header Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="physics_handler.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="particle.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="setup.h">
+      <Filter>Source Files\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

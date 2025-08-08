@@ -156,6 +156,7 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="source.cpp" />
+    <None Include="helpers.h" />
     <None Include="vertexShader.vert">
       <FileType>Document</FileType>
     </None>
@@ -165,6 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="particle.h" />
+    <ClInclude Include="physics_handler.h" />
+    <ClInclude Include="setup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,5 +8,5 @@ uniform float alpha;
 
 void main()
 {
-	FragColor = vec4(1.0f);
+	FragColor = vec4(aCol, alpha);
 }
