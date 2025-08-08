@@ -5,10 +5,10 @@
 #include <shader.h>
 #include <vector>
 #include <array>
-#include "particle.h"
-#include "physics_handler.h"
-#include "helpers.h"
-#include "setup.h"
+#include "Headers/particle.h"
+#include "Headers/physics_handler.h"
+#include "Headers/helpers.h"
+#include "Headers/setup.h"
 
 //for fluid like behaviour, increase the num of particles
 
@@ -39,7 +39,7 @@ int main()
 	spawnParticles(particleNum, points, 5, 7);
 
 	//setting up shaders
-	Shader objectShader{ "vertexShader.vert", "fragmentShader.frag" };
+	Shader objectShader{ "Src/Shaders/vertexShader.vert", "Src/Shaders/fragmentShader.frag" };
 
 	//configurable parameters and windows
 	glm::vec3 particleColor;

@@ -5,8 +5,7 @@
 #include <ImGui/imgui_impl_glfw.h>
 #include <ImGui/imgui_impl_opengl3.h>
 #include <random>
-#include "particle.h"
-#include <glfw/glfw3.h>
+#include "Headers/particle.h"
 
 constexpr float PI = 3.14;
 
@@ -81,7 +80,6 @@ int setup(int width, int height, GLFWwindow*& window, int res, unsigned int& cir
 
 	return 0;
 }
-
 
 static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigned int& VBO)
 {

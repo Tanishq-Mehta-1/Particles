@@ -1,7 +1,7 @@
 #ifndef PHYSICS_HANDLER_H
 #define PHYSICS_HANDLER_H
 
-#include "particle.h"
+#include "Headers/particle.h"
 #include <vector>
 
 class PhysicsHandler {

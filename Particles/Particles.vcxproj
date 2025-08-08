@@ -155,19 +155,15 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_tables.cpp" />
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="source.cpp" />
-    <None Include="helpers.h" />
-    <None Include="vertexShader.vert">
-      <FileType>Document</FileType>
-    </None>
+    <ClCompile Include="Src\source.cpp" />
+    <None Include="Src\Shaders\fragmentShader.frag" />
+    <None Include="Src\Shaders\vertexShader.vert" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="fragmentShader.frag" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="particle.h" />
-    <ClInclude Include="physics_handler.h" />
-    <ClInclude Include="setup.h" />
+    <ClInclude Include="Headers\helpers.h" />
+    <ClInclude Include="Headers\particle.h" />
+    <ClInclude Include="Headers\physics_handler.h" />
+    <ClInclude Include="Headers\setup.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
