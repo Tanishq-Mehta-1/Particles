@@ -61,22 +61,33 @@ int main()
 
 	//generating instanced arrays
 	glBindVertexArray(circleVAO);
+
 	//MVP
 	unsigned int Model_Projections;
 	glGenBuffers(1, &Model_Projections);
 	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
 	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
+	//setting vertex attrib pointers
+	for (int i = 0;i < 4; i++) {
+		glEnableVertexAttribArray(1 + i);
+		glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
+		glVertexAttribDivisor(1 + i, 1);
+	}
 
 	//Col
-	/*unsigned int Model_Projections;
-	glGenBuffers(1, &Model_Projections);
-	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
-	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);*/
+	unsigned int Colors;
+	glGenBuffers(1, &Colors);
+	glBindBuffer(GL_ARRAY_BUFFER, Colors);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::vec3), NULL, GL_DYNAMIC_DRAW);
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+	glEnableVertexAttribArray(5);
+	glVertexAttribDivisor(5, 1);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 	glBindVertexArray(0);
 
 	std::vector<glm::mat4> model_projections;
+	std::vector<glm::vec3> colors;
 
 	while (!glfwWindowShouldClose(window))
 	{
@@ -270,9 +281,11 @@ int main()
 		glm::mat4 projection = glm::ortho(-window_width / 2.0f, window_width / 2.0f, -window_height / 2.0f, window_height / 2.0f, -1.0f, 1.0f);
 
 		model_projections.clear();
+		colors.clear();
 
 		for (Particle& p : points) {
 			model_projections.push_back(projection * p.getModel());
+			colors.push_back(p.colour);
 		}
 
 		//setup instanced arrays
@@ -283,13 +296,10 @@ int main()
 		glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
 		glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::mat4), model_projections.data());
 
-		//setting vertex attrib pointers
-		for (int i = 0;i < 4; i++) {
-			glEnableVertexAttribArray(1 + i);
-			glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
-			glVertexAttribDivisor(1 + i, 1);
-		}
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(circleVAO);
+		//setup Colours
+		glBindBuffer(GL_ARRAY_BUFFER, Colors);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::vec3), colors.data());
 
 		//draw call
 		glDrawArraysInstanced(GL_TRIANGLES, 0, res*3, particleNum);

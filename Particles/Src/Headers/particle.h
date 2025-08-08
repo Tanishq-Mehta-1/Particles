@@ -63,9 +63,9 @@ public:
 		handleBoundaryCollision();
 
 		if(velocity_colouring)
-			enableVelocityColouring();
+			VelocityColouring();
 		else if (collision_colouring)
-			enableCollisionColouring();
+			CollisionColouring();
 
 		//drag calculations
 		glm::vec2 a_drag = glm::vec2(0.0f);
@@ -126,19 +126,18 @@ private:
 	}
 
 	float Green_Speed{ 375.0f  }, Red_Speed{ 750.0f }, White_Speed{ 12000.0f};
-	void enableVelocityColouring()
+	void VelocityColouring()
 	{
 		float speed = glm::length(velocity);
-		//W = 12K, R = 8K, G = 4K, B = 0K, interpolate between these 
 		if (speed < Green_Speed)
 			colour = glm::vec3(0.0f, 1.0f, -1.0f) * (speed / Green_Speed) + glm::vec3(0.0f, 0.0f, 1.0f);
-		else if (speed < Red_Speed)//speed >= 4k and < 8k
+		else if (speed < Red_Speed)
 			colour = glm::vec3(1.0f, -1.0f, 0.0f) * ((speed - Green_Speed) / Red_Speed - Green_Speed) + glm::vec3(0.0f, 1.0f, 0.0f);
-		else //speed >= 8k and <= 12k
+		else 
 			colour = glm::vec3(0.0f, 1.0f, 1.0f) * ((speed - Red_Speed) / White_Speed - Red_Speed) + glm::vec3(1.0f, 0.0f, 0.0f);
 	}
 
-	void enableCollisionColouring() {
+	void CollisionColouring() {
 		if (hasCollided)
 		{
 			colour = glm::vec3(1.0f, 0.0f, 0.0f);
