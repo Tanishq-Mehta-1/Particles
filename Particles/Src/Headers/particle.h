@@ -7,8 +7,6 @@
 #include <shader.h>
 #include <GLFW/glfw3.h>
 
-//void handleParticleCollisions(Particle& p1, Particle& p2);
-
 class Particle
 {
 public:
@@ -44,8 +42,8 @@ public:
 		shader.use();
 		glBindVertexArray(VAO);
 
-		shader.setVec3("Col", this->colour);
-		shader.setFloat("alpha_in", this->alpha);
+		shader.setVec3("col", this->colour);
+		shader.setFloat("alp", this->alpha);
 
 		float width = window_width;
 		float height = window_height;
@@ -54,7 +52,7 @@ public:
 		shader.setMat4("model", modelMatrix);
 
 		//draw call
-		glDrawArrays(GL_TRIANGLE_FAN, 0, res + 2);
+		glDrawArrays(GL_TRIANGLES, 0, res*3);
 		glBindVertexArray(0);
 	}
 
@@ -169,7 +167,7 @@ void handleParticleCollisions(Particle& p1, Particle& p2)
 
 		//normalize(vec) = vec / length(vec), which is NaN for 0 vectors
 		glm::vec2 relative_velocity = p1.velocity - p2.velocity;
-		glm::vec2 normal = distance == 0 ? glm::vec2(1.0f, 0.0f) : delta / distance;
+		glm::vec2 normal = distance == 0 ? glm::vec2(0.0f, 0.0f) : delta / distance;
 
 		float velocity_along_normal = glm::dot(relative_velocity, normal); //relative velocity along normal
 

@@ -137,6 +137,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,6 +146,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>assimp-vc143-mtd.lib;glfw3.lib;opengl32.lib;$(CoreLibraryDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -157,7 +160,9 @@
     <ClCompile Include="..\..\..\..\..\..\OpenGL\Libs + includes\Includes\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="Src\source.cpp" />
     <None Include="Src\Shaders\fragmentShader.frag" />
+    <None Include="Src\Shaders\fragmentShader_NonInstanced.frag" />
     <None Include="Src\Shaders\vertexShader.vert" />
+    <None Include="Src\Shaders\vertexShader_NonInstanced.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Src\Headers\helpers.h" />
