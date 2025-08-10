@@ -22,7 +22,7 @@ public:
 
 	float restitution_coefficient{ 1.0f };
 	glm::vec2 velocity{ 0.0f, 0.0f };
-	float pixelsPerMeter{ 500 / 9.8f };
+	float pixelsPerMeter{ 300.0f / 9.8f };
 	glm::vec2 acceleration{ 0.0f, 0.0f }; 
 	//remove pixelsPerMeter for slowmo haha
 
@@ -47,6 +47,7 @@ public:
 
 		float width = window_width;
 		float height = window_height;
+
 		glm::mat4 projection = glm::ortho(-width / 2, width / 2, -height / 2, height / 2, -1.0f, 1.0f);
 		shader.setMat4("projection", projection);
 		shader.setMat4("model", modelMatrix);
@@ -58,6 +59,8 @@ public:
 
 	void update(float deltaTime, GLFWwindow* window, bool velocity_colouring, bool collision_colouring)
 	{
+
+		glfwGetWindowSize(window, &window_width, &window_height);
 		handleBoundaryCollision();
 
 		if(velocity_colouring)
@@ -86,8 +89,11 @@ public:
 		return modelMatrix;
 	}
 
-private:
+	glm::vec2 getWindowSize() const {
+		return glm::vec2(window_width, window_height);
+	}
 
+private:
 	int window_width;
 	int window_height;
 

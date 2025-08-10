@@ -40,7 +40,8 @@ int main()
 	spawnParticles(particleNum, points, 5, 7);
 
 	//setting up shaders
-	Shader objectShader{ "C:\\Users\\tanis\\source\\repos\\Particles\\Particles\\Src\\Shaders\\vertexShader_NonInstanced.vert", "C:\\Users\\tanis\\source\\repos\\Particles\\Particles\\Src\\Shaders\\fragmentShader_NonInstanced.frag" };
+	Shader objectShader{ "C:\\Users\\tanis\\source\\repos\\Particles\\Particles\\Src\\Shaders\\vertexShader.vert",
+		"C:\\Users\\tanis\\source\\repos\\Particles\\Particles\\Src\\Shaders\\fragmentShader.frag" };
 
 	//configurable parameters and windows
 	glm::vec3 particleColor;
@@ -59,32 +60,32 @@ int main()
 	std::array<int, 2> particleSizes{ 5,7 };
 	std::array<int, 2> prevSizes{ 5,7 };
 
-	////generating instanced arrays
-	//glBindVertexArray(circleVAO);
+	//generating instanced arrays
+	glBindVertexArray(circleVAO);
 
-	////MVP
-	//unsigned int Model_Projections;
-	//glGenBuffers(1, &Model_Projections);
-	//glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
-	//glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
-	////setting vertex attrib pointers
-	//for (int i = 0;i < 4; i++) {
-	//	glEnableVertexAttribArray(1 + i);
-	//	glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
-	//	glVertexAttribDivisor(1 + i, 1);
-	//}
+	//MVP
+	unsigned int Model_Projections;
+	glGenBuffers(1, &Model_Projections);
+	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
+	//setting vertex attrib pointers
+	for (int i = 0;i < 4; i++) {
+		glEnableVertexAttribArray(1 + i);
+		glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
+		glVertexAttribDivisor(1 + i, 1);
+	}
 
-	////Col
-	//unsigned int Colors;
-	//glGenBuffers(1, &Colors);
-	//glBindBuffer(GL_ARRAY_BUFFER, Colors);
-	//glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::vec3), NULL, GL_DYNAMIC_DRAW);
-	//glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
-	//glEnableVertexAttribArray(5);
-	//glVertexAttribDivisor(5, 1);
+	//Col
+	unsigned int Colors;
+	glGenBuffers(1, &Colors);
+	glBindBuffer(GL_ARRAY_BUFFER, Colors);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::vec3), NULL, GL_DYNAMIC_DRAW);
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+	glEnableVertexAttribArray(5);
+	glVertexAttribDivisor(5, 1);
 
-	//glBindBuffer(GL_ARRAY_BUFFER, 0);
-	//glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 	std::vector<glm::mat4> model_projections;
 	std::vector<glm::vec3> colors;
@@ -233,10 +234,12 @@ int main()
 		}
 
 		//update and then draw
-
-		/*int window_width, window_height;
+		int window_width, window_height;
 		glfwGetWindowSize(window, &window_width, &window_height);
-		glm::mat4 projection = glm::ortho(-window_width / 2.0f, window_width / 2.0f, -window_height / 2.0f, window_height / 2.0f, -1.0f, 1.0f);*/
+		glm::mat4 projection = glm::ortho(-window_width / 2.0f, window_width / 2.0f, -window_height / 2.0f, window_height / 2.0f, -1.0f, 1.0f);
+
+		objectShader.use();
+		objectShader.setMat4("projection", projection);
 
 		for (int i = 0; i < particleNum; i++)
 		{
@@ -274,39 +277,36 @@ int main()
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour, collision_colour);
 			//draw call
-			points[i].drawCircle(circleVAO, objectShader, res);
-
-		/*	objectShader.use();
-			objectShader.setMat4("projection", projection);*/
+			//points[i].drawCircle(circleVAO, objectShader, res);
 
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);
 			//extremely slow process, since we are sending gpu information for every particle, can be made better using instancing
 		}
 
-		//model_projections.clear();
-		//colors.clear();
+		model_projections.clear();
+		colors.clear();
 
-		//for (Particle& p : points) {
-		//	model_projections.push_back(p.getModel());
-		//	colors.push_back(p.colour);
-		//}
+		for (Particle& p : points) {
+			model_projections.push_back(p.getModel());
+			colors.push_back(p.colour);
+		}
 
-		////setup instanced arrays
-		//objectShader.use();
-		//glBindVertexArray(circleVAO);
+		//setup instanced arrays
+		objectShader.use();
+		glBindVertexArray(circleVAO);
 
-		////setup MVP
-		//glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
-		//glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::mat4), model_projections.data());
+		//setup MVP
+		glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::mat4), model_projections.data());
 
-		////setup Colours
-		//glBindBuffer(GL_ARRAY_BUFFER, Colors);
-		//glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::vec3), colors.data());
+		//setup Colours
+		glBindBuffer(GL_ARRAY_BUFFER, Colors);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, particleNum * sizeof(glm::vec3), colors.data());
 
-		////draw call
-		//glDrawArraysInstanced(GL_TRIANGLES, 0, res * 3, particleNum);
-		//glBindVertexArray(0);
+		//draw call
+		glDrawArraysInstanced(GL_TRIANGLES, 0, res * 3, particleNum);
+		glBindVertexArray(0);
 
 		glDisable(GL_SCISSOR_TEST);
 

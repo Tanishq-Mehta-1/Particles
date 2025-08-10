@@ -81,5 +81,8 @@
     <ClInclude Include="Src\Headers\setup.h">
       <Filter>Source Files\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Src\Headers\gridLookup.h">
+      <Filter>Source Files\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
