@@ -9,6 +9,7 @@
 #include "Headers/physics_handler.h"
 #include "Headers/helpers.h"
 #include "Headers/setup.h"
+#include "Headers/gridLookup.h"
 
 //for fluid like behaviour, increase the num of particles
 
@@ -25,7 +26,7 @@ float lastTime = { 0.0f };
 int maxParticles{ 5000 };
 GLFWwindow* window{};
 
-int res = 10;
+int res = 40;
 unsigned int circleVAO, circleVBO; //vertex and array buffers
 
 int main()
@@ -38,6 +39,9 @@ int main()
 
 	std::vector<Particle> points;
 	spawnParticles(particleNum, points, 5, 7);
+
+	glm::vec2 windowSize = points[0].getWindowSize();
+	GridLookup grid(windowSize[0], windowSize[1], 7);
 
 	//setting up shaders
 	Shader objectShader{ "C:\\Users\\tanis\\source\\repos\\Particles\\Particles\\Src\\Shaders\\vertexShader.vert",
@@ -140,8 +144,8 @@ int main()
 			if (particleSizes[0] > particleSizes[1])
 				particleSizes[0] = particleSizes[1];
 
-			particleSizes[0] = glm::clamp(particleSizes[0], 0, 30);
-			particleSizes[1] = glm::clamp(particleSizes[1], 0, 30);
+			particleSizes[0] = glm::clamp(particleSizes[0], 1, 50);
+			particleSizes[1] = glm::clamp(particleSizes[1], 1, 50);
 
 			//dropdown menu
 			{
@@ -208,15 +212,18 @@ int main()
 		handleParticleNum(prevNum, particleNum, points, particleSizes, prevSizes);
 
 		//handle collisions and gravity (for n^2 algo)
-		for (int i = 0; i < particleNum; i++) {
-			for (int j = i + 1; j < particleNum; j++)
-			{
-				if (astronomical)
-					handleGravity(points[i], points[j]);
+		//for (int i = 0; i < particleNum; i++) {
+		//	for (int j = i + 1; j < particleNum; j++)
+		//	{
+		//		if (astronomical)
+		//			handleGravity(points[i], points[j]);
 
-				handleParticleCollisions(points[i], points[j]);
-			}
-		}
+		//		handleParticleCollisions(points[i], points[j]);
+		//	}
+		//}
+		//
+		grid.buildGrid(points, particleSizes[1], points[0].getWindowSize());
+		grid.resolveCollisions(points, astronomical);
 
 		//pre-configured scenes
 		if (wave_motion)

@@ -3,12 +3,13 @@
 
 #include "particle.h"
 #include <vector>
+
 class GridLookup {
 public:
 
 	std::vector<std::vector<int>> cells;
-	int width{ 0.0 };
-	int height{ 0.0 };
+	int width{ 0 };
+	int height{ 0 };
 	float cellSize{ 0.0f };
 
 	GridLookup(int screen_width, int screen_height, int maxRadius) {
@@ -17,39 +18,58 @@ public:
 		width = ceil(screen_width / cellSize);
 		height = ceil(screen_height / cellSize);
 
-		cells.reserve(width * height);
+		std::cout << width << ' ' << height << '\n';
+
+		cells.resize(width * height);
 	}
 
 	inline int index(int x, int y) const {
 		return y * width + x;
 	}
 
-	void buildGrid(const std::vector<Particle>& particles) {
+	void updateGrid(int maxRadius, glm::vec2& windowSize) {
+		cellSize = 2 * maxRadius;
+		width = ceil(windowSize[0] / cellSize);
+		height = ceil(windowSize[1] / cellSize);
+		cells.resize(width * height);
+	}
+
+	void buildGrid(const std::vector<Particle>& particles, int maxRadius, glm::vec2 windowSize) {
 
 		//clear grid
 		for (std::vector<int>& cell : cells) {
 			cell.clear();
 		}
 
-		glm::vec2 windowSize = particles[0].getWindowSize();
-		int offset_x = windowSize.x / 2;
-		int offset_y = windowSize.y / 2;
+		//update grid
+		updateGrid(maxRadius, windowSize);
+
+		//offset calc
+		float offset_x = windowSize.x / 2.0f;
+		float offset_y = windowSize.y / 2.0f;
 
 		for (int i = 0, n = particles.size(); i < n; i++) {
 
 			const glm::vec2& pos = particles[i].position;
 
-			int px = floor(pos.x + offset_x/ cellSize);
-			int py = floor(pos.y + offset_y/ cellSize);
+			int px = floor((pos.x + windowSize[0] / 2.0f) / cellSize);
+			int py = floor((pos.y + windowSize[1] / 2.0f) / cellSize);
 
 			px = glm::clamp(px, 0, width - 1);
 			py = glm::clamp(py, 0, height - 1);
 
 			cells[index(px, py)].push_back(i);
+
+			if (px >= width || px < 0)
+				std::cout << pos.x << ' ' << px << ' ';
+			if (py >= height || py < 0)
+				std::cout << pos.y << ' ' << py << '\n';
+			if (index(px, py) >= cells.size())
+				std::cout << pos.x << ' ' << pos.y << ' ' << px << ' ' << py <<  ' ' << index(px, py) << ' ' << cells.size() << '\n';
 		}
 	}
 
-	void resolveCollisions(std::vector<Particle>& particles) {
+	void resolveCollisions(std::vector<Particle>& particles, bool astronomical) {
 
 		int offsets[9][2] = {
 			{-1,-1}, {0,-1}, {1,-1},
@@ -77,6 +97,10 @@ public:
 
 							if (j <= i) continue;
 							auto& p2 = particles[j];
+
+							if (astronomical)
+								handleGravity(p1, p2);
+
 							handleParticleCollisions(p1, p2);
 						}
 					}
