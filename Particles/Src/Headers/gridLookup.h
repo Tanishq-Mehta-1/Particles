@@ -27,7 +27,7 @@ public:
 		return y * width + x;
 	}
 
-	void updateGrid(int maxRadius, glm::vec2& windowSize) {
+	void updateGrid(int maxRadius, glm::vec2 windowSize) {
 		cellSize = 2 * maxRadius;
 		width = ceil(windowSize[0] / cellSize);
 		height = ceil(windowSize[1] / cellSize);
@@ -42,7 +42,7 @@ public:
 		}
 
 		//update grid
-		updateGrid(maxRadius, windowSize);
+		//updateGrid(maxRadius, windowSize);
 
 		//offset calc
 		float offset_x = windowSize.x / 2.0f;
@@ -69,7 +69,7 @@ public:
 		}
 	}
 
-	void resolveCollisions(std::vector<Particle>& particles, bool astronomical) {
+	void resolveCollisions(std::vector<Particle>& particles) {
 
 		int offsets[9][2] = {
 			{-1,-1}, {0,-1}, {1,-1},
@@ -98,9 +98,6 @@ public:
 							if (j <= i) continue;
 							auto& p2 = particles[j];
 
-							if (astronomical)
-								handleGravity(p1, p2);
-
 							handleParticleCollisions(p1, p2);
 						}
 					}
@@ -109,8 +106,50 @@ public:
 		}
 	}
 
-private:
+	//Needs to be revamped
+	void resolveGravity(std::vector<Particle>& particles) {
 
+		std::vector<std::pair<int, int>> offsets;
+		int size = 20;
+		offsets.reserve(size * size);
+
+		for (int dy = -size; dy <= size; dy++) {
+			for (int dx = -size; dx <= size; dx++) {
+				offsets.emplace_back(dx, dy);
+			}
+		}
+
+		for (int cy = 0; cy < height; cy++) {
+			for (int cx = 0; cx < width; cx++) {
+
+				const std::vector<int>& cell = cells[index(cx, cy)];
+				for (int i : cell) {
+
+					auto& p1 = particles[i];
+					for (auto& offset : offsets) {
+
+						int nx = cx + offset.first;
+						int ny = cy + offset.second;
+
+						if (nx < 0 || ny < 0 || nx >= width || ny >= height)
+							continue;
+
+						const std::vector<int>& neighborCell = cells[index(nx, ny)];
+						for (int j : neighborCell) {
+
+							if (j <= i) continue;
+							auto& p2 = particles[j];
+
+							handleGravity(p1, p2);
+						}
+					}
+				}
+			}
+		}
+	}
+
+private:
+	
 
 };
 

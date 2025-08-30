@@ -15,15 +15,15 @@
 
 #define PI 3.14
 
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize);
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize, GridLookup& grid);
 void spawnParticles(int no_of_particles, std::vector<Particle>& points, int size_min, int size_max);
 
-int width = 1440;
-int height = 900;
+int width = 1920;
+int height = 1080;
 float deltaTime{ 0.0f };
 float currentTime = { 0.0f };
 float lastTime = { 0.0f };
-int maxParticles{ 5000 };
+int maxParticles{ 30000 };
 GLFWwindow* window{};
 
 int res = 40;
@@ -64,32 +64,10 @@ int main()
 	std::array<int, 2> particleSizes{ 5,7 };
 	std::array<int, 2> prevSizes{ 5,7 };
 
-	//generating instanced arrays
-	glBindVertexArray(circleVAO);
-
-	//MVP
 	unsigned int Model_Projections;
-	glGenBuffers(1, &Model_Projections);
-	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
-	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
-	//setting vertex attrib pointers
-	for (int i = 0;i < 4; i++) {
-		glEnableVertexAttribArray(1 + i);
-		glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
-		glVertexAttribDivisor(1 + i, 1);
-	}
-
-	//Col
 	unsigned int Colors;
-	glGenBuffers(1, &Colors);
-	glBindBuffer(GL_ARRAY_BUFFER, Colors);
-	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::vec3), NULL, GL_DYNAMIC_DRAW);
-	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
-	glEnableVertexAttribArray(5);
-	glVertexAttribDivisor(5, 1);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	instancedArraySetup(Model_Projections, Colors, maxParticles, circleVAO);
 
 	std::vector<glm::mat4> model_projections;
 	std::vector<glm::vec3> colors;
@@ -209,21 +187,12 @@ int main()
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
 		//scene render
-		handleParticleNum(prevNum, particleNum, points, particleSizes, prevSizes);
+		handleParticleNum(prevNum, particleNum, points, particleSizes, prevSizes, grid);
 
-		//handle collisions and gravity (for n^2 algo)
-		//for (int i = 0; i < particleNum; i++) {
-		//	for (int j = i + 1; j < particleNum; j++)
-		//	{
-		//		if (astronomical)
-		//			handleGravity(points[i], points[j]);
-
-		//		handleParticleCollisions(points[i], points[j]);
-		//	}
-		//}
-		//
 		grid.buildGrid(points, particleSizes[1], points[0].getWindowSize());
-		grid.resolveCollisions(points, astronomical);
+		if (astronomical)
+			grid.resolveGravity(points);
+		grid.resolveCollisions(points);
 
 		//pre-configured scenes
 		if (wave_motion)
@@ -283,8 +252,6 @@ int main()
 				points[i].acceleration = points[i].pixelsPerMeter * glm::vec2(acc_x, acc_y);
 			points[i].restitution_coefficient = e;
 			points[i].update(deltaTime, window, velocity_colour, collision_colour);
-			//draw call
-			//points[i].drawCircle(circleVAO, objectShader, res);
 
 			if (astronomical)
 				points[i].acceleration = glm::vec2(0.0f);
@@ -330,10 +297,12 @@ int main()
 	return 0;
 }
 
-void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize)
+void handleParticleNum(int& prevNum, int& particleNum, std::vector<Particle>& points, std::array<int, 2>& sizes, std::array<int, 2>& prevSize, GridLookup& grid)
 {
 	if (prevSize[0] != sizes[0] || prevSize[1] != sizes[1])
 	{
+
+		grid.updateGrid(sizes[1], points[0].getWindowSize());
 		//remove all points
 		for (int i = 0; i < particleNum; i++)
 			points.pop_back();

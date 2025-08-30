@@ -118,5 +118,30 @@ static void circleGenerate(glm::vec2 center, int res, unsigned int& VAO, unsigne
 	glBindVertexArray(0);
 }
 
+void instancedArraySetup(unsigned int& Model_Projections, unsigned int& Colors, int maxParticles, unsigned int circleVAO) {
+	//generating instanced arrays
+	glBindVertexArray(circleVAO);
+
+	glGenBuffers(1, &Model_Projections);
+	glBindBuffer(GL_ARRAY_BUFFER, Model_Projections);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::mat4), NULL, GL_DYNAMIC_DRAW);
+	//setting vertex attrib pointers
+	for (int i = 0;i < 4; i++) {
+		glEnableVertexAttribArray(1 + i);
+		glVertexAttribPointer(1 + i, 4, GL_FLOAT, GL_FALSE, sizeof(glm::mat4), (void*)(sizeof(glm::vec4) * i));
+		glVertexAttribDivisor(1 + i, 1);
+	}
+
+	glGenBuffers(1, &Colors);
+	glBindBuffer(GL_ARRAY_BUFFER, Colors);
+	glBufferData(GL_ARRAY_BUFFER, maxParticles * sizeof(glm::vec3), NULL, GL_DYNAMIC_DRAW);
+	glVertexAttribPointer(5, 3, GL_FLOAT, GL_FALSE, sizeof(glm::vec3), (void*)0);
+	glEnableVertexAttribArray(5);
+	glVertexAttribDivisor(5, 1);
+
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
+}
+
 #endif // !SETUP_H
 
