@@ -1,0 +1,50 @@
+[
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/Src/source.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/Src/source.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/Src/source.cpp",
+  "output": "CMakeFiles/particles.dir/Src/source.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/cc  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src  -o CMakeFiles/particles.dir/glad.c.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/glad.c",
+  "output": "CMakeFiles/particles.dir/glad.c.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_draw.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_draw.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_tables.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_tables.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_widgets.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_widgets.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_glfw.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_glfw.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o"
+},
+{
+  "directory": "/home/deo3d2y/Desktop/Dev/C++/Particles",
+  "command": "/usr/bin/c++  -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -std=gnu++17 -o CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_opengl3.cpp",
+  "file": "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_opengl3.cpp",
+  "output": "CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o"
+}
+]

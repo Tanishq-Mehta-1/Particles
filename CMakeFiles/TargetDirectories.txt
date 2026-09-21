@@ -1,0 +1,3 @@
+/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles/particles.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles/edit_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles/rebuild_cache.dir
