@@ -209,10 +209,8 @@ CMAKE_STRIP:FILEPATH=/usr/bin/strip
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
-//Path to a CMake toolchain file, read early in the CMake run,
-// that specifies the compilers, toolchain utilities, and target-platform
-// information used when cross-compiling.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
+//The CMake toolchain file
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
