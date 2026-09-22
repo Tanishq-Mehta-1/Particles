@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src
+C_INCLUDES = -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -I/home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/..
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src
+CXX_INCLUDES = -I/home/deo3d2y/Desktop/Dev/C++/Particles/. -I/home/deo3d2y/Desktop/Dev/C++/Particles -I/home/deo3d2y/Desktop/Dev/C++/Particles/Src -I/home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/..
 
 CXX_FLAGS = -std=gnu++17
 

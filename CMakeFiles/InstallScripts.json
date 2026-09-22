@@ -1,7 +1,9 @@
 {
 	"InstallScripts" : 
 	[
-		"/home/deo3d2y/Desktop/Dev/C++/Particles/cmake_install.cmake"
+		"/home/deo3d2y/Desktop/Dev/C++/Particles/cmake_install.cmake",
+		"/home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-build/cmake_install.cmake",
+		"/home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-build/glm/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

@@ -1,0 +1,26 @@
+CMakeFiles/particles.dir/glad.c.o: \
+  /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/stdio.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/wasi/api.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/stddef.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/stddef.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_header_macro.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_ptrdiff_t.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_size_t.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_wchar_t.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_null.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_max_align_t.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/__stddef_offsetof.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/lib/clang/24/include/stdint.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/stdint.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/bits/alltypes.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/features.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/compat/stdlib.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/stdlib.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/alloca.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/compat/string.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/string.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/strings.h \
+  /home/deo3d2y/Desktop/Dev/C++/Particles/./glad/glad.h \
+  /home/deo3d2y/Desktop/Dev/C++/Particles/./KHR/khrplatform.h \
+  /home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot/include/dlfcn.h

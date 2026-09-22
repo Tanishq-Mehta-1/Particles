@@ -1,0 +1,1039 @@
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:12 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_UNAME"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "uname"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/uname"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/uname"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/uname"
+      - "/usr/local/sbin/uname"
+      - "/usr/local/bin/uname"
+    found: "/usr/bin/uname"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:213 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The target system is: Emscripten - 1 - x86
+      The host system is: Linux - 7.1.4-arch1-1 - x86_64
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_MAKE_PROGRAM"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "gmake"
+      - "make"
+      - "smake"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/gmake"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/gmake"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/gmake"
+      - "/usr/local/sbin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/usr/bin/site_perl/gmake"
+      - "/usr/bin/vendor_perl/gmake"
+      - "/usr/bin/core_perl/gmake"
+      - "/opt/rocm/bin/gmake"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/gmake"
+      - "/bin/gmake"
+      - "/sbin/gmake"
+      - "/home/deo3d2y/Downloads/emsdk/make"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/make"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/make"
+      - "/usr/local/sbin/make"
+      - "/usr/local/bin/make"
+    found: "/usr/bin/make"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_STRIP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-strip"
+      - "strip"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-strip"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-strip"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-strip"
+      - "/usr/local/sbin/llvm-strip"
+      - "/usr/local/bin/llvm-strip"
+      - "/usr/bin/llvm-strip"
+      - "/usr/bin/site_perl/llvm-strip"
+      - "/usr/bin/vendor_perl/llvm-strip"
+      - "/usr/bin/core_perl/llvm-strip"
+      - "/opt/rocm/bin/llvm-strip"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-strip"
+      - "/bin/llvm-strip"
+      - "/sbin/llvm-strip"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/strip"
+      - "/home/deo3d2y/Downloads/emsdk/strip"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/strip"
+      - "/usr/local/sbin/strip"
+      - "/usr/local/bin/strip"
+    found: "/usr/bin/strip"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_LINKER"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "ld.lld"
+      - "ld"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/ld.lld"
+      - "/home/deo3d2y/Downloads/emsdk/ld.lld"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/ld.lld"
+      - "/usr/local/sbin/ld.lld"
+      - "/usr/local/bin/ld.lld"
+      - "/usr/bin/ld.lld"
+      - "/usr/bin/site_perl/ld.lld"
+      - "/usr/bin/vendor_perl/ld.lld"
+      - "/usr/bin/core_perl/ld.lld"
+      - "/opt/rocm/bin/ld.lld"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/ld.lld"
+      - "/bin/ld.lld"
+      - "/sbin/ld.lld"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/ld"
+      - "/home/deo3d2y/Downloads/emsdk/ld"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/ld"
+      - "/usr/local/sbin/ld"
+      - "/usr/local/bin/ld"
+    found: "/usr/bin/ld"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJDUMP"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objdump"
+      - "objdump"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-objdump"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-objdump"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-objdump"
+      - "/usr/local/sbin/llvm-objdump"
+      - "/usr/local/bin/llvm-objdump"
+      - "/usr/bin/llvm-objdump"
+      - "/usr/bin/site_perl/llvm-objdump"
+      - "/usr/bin/vendor_perl/llvm-objdump"
+      - "/usr/bin/core_perl/llvm-objdump"
+      - "/opt/rocm/bin/llvm-objdump"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-objdump"
+      - "/bin/llvm-objdump"
+      - "/sbin/llvm-objdump"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/objdump"
+      - "/home/deo3d2y/Downloads/emsdk/objdump"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/objdump"
+      - "/usr/local/sbin/objdump"
+      - "/usr/local/bin/objdump"
+    found: "/usr/bin/objdump"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_OBJCOPY"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-objcopy"
+      - "objcopy"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-objcopy"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-objcopy"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-objcopy"
+      - "/usr/local/sbin/llvm-objcopy"
+      - "/usr/local/bin/llvm-objcopy"
+      - "/usr/bin/llvm-objcopy"
+      - "/usr/bin/site_perl/llvm-objcopy"
+      - "/usr/bin/vendor_perl/llvm-objcopy"
+      - "/usr/bin/core_perl/llvm-objcopy"
+      - "/opt/rocm/bin/llvm-objcopy"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-objcopy"
+      - "/bin/llvm-objcopy"
+      - "/sbin/llvm-objcopy"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/objcopy"
+      - "/home/deo3d2y/Downloads/emsdk/objcopy"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/objcopy"
+      - "/usr/local/sbin/objcopy"
+      - "/usr/local/bin/objcopy"
+    found: "/usr/bin/objcopy"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_READELF"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-readelf"
+      - "readelf"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-readelf"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-readelf"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-readelf"
+      - "/usr/local/sbin/llvm-readelf"
+      - "/usr/local/bin/llvm-readelf"
+      - "/usr/bin/llvm-readelf"
+      - "/usr/bin/site_perl/llvm-readelf"
+      - "/usr/bin/vendor_perl/llvm-readelf"
+      - "/usr/bin/core_perl/llvm-readelf"
+      - "/opt/rocm/bin/llvm-readelf"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-readelf"
+      - "/bin/llvm-readelf"
+      - "/sbin/llvm-readelf"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/readelf"
+      - "/home/deo3d2y/Downloads/emsdk/readelf"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/readelf"
+      - "/usr/local/sbin/readelf"
+      - "/usr/local/bin/readelf"
+    found: "/usr/bin/readelf"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_DLLTOOL"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-dlltool"
+      - "dlltool"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-dlltool"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-dlltool"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-dlltool"
+      - "/usr/local/sbin/llvm-dlltool"
+      - "/usr/local/bin/llvm-dlltool"
+      - "/usr/bin/llvm-dlltool"
+      - "/usr/bin/site_perl/llvm-dlltool"
+      - "/usr/bin/vendor_perl/llvm-dlltool"
+      - "/usr/bin/core_perl/llvm-dlltool"
+      - "/opt/rocm/bin/llvm-dlltool"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-dlltool"
+      - "/bin/llvm-dlltool"
+      - "/sbin/llvm-dlltool"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/dlltool"
+      - "/home/deo3d2y/Downloads/emsdk/dlltool"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/dlltool"
+      - "/usr/local/sbin/dlltool"
+      - "/usr/local/bin/dlltool"
+      - "/usr/bin/dlltool"
+      - "/usr/bin/site_perl/dlltool"
+      - "/usr/bin/vendor_perl/dlltool"
+      - "/usr/bin/core_perl/dlltool"
+      - "/opt/rocm/bin/dlltool"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/dlltool"
+      - "/bin/dlltool"
+      - "/sbin/dlltool"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_ADDR2LINE"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "llvm-addr2line"
+      - "addr2line"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/llvm-addr2line"
+      - "/home/deo3d2y/Downloads/emsdk/llvm-addr2line"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/llvm-addr2line"
+      - "/usr/local/sbin/llvm-addr2line"
+      - "/usr/local/bin/llvm-addr2line"
+      - "/usr/bin/llvm-addr2line"
+      - "/usr/bin/site_perl/llvm-addr2line"
+      - "/usr/bin/vendor_perl/llvm-addr2line"
+      - "/usr/bin/core_perl/llvm-addr2line"
+      - "/opt/rocm/bin/llvm-addr2line"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/llvm-addr2line"
+      - "/bin/llvm-addr2line"
+      - "/sbin/llvm-addr2line"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/addr2line"
+      - "/home/deo3d2y/Downloads/emsdk/addr2line"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/addr2line"
+      - "/usr/local/sbin/addr2line"
+      - "/usr/local/bin/addr2line"
+    found: "/usr/bin/addr2line"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/CMakeFindBinUtils.cmake:247 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:200 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_TAPI"
+    description: "Path to a program."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "tapi"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/tapi"
+      - "/home/deo3d2y/Downloads/emsdk/tapi"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/tapi"
+      - "/usr/local/sbin/tapi"
+      - "/usr/local/bin/tapi"
+      - "/usr/bin/tapi"
+      - "/usr/bin/site_perl/tapi"
+      - "/usr/bin/vendor_perl/tapi"
+      - "/usr/bin/core_perl/tapi"
+      - "/opt/rocm/bin/tapi"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/tapi"
+      - "/bin/tapi"
+      - "/sbin/tapi"
+    found: false
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Compiler/Clang-FindBinUtils.cmake:50 (find_program)"
+      - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:201 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "program"
+    variable: "CMAKE_C_COMPILER_CLANG_SCAN_DEPS"
+    description: "`clang-scan-deps` dependency scanner"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: false
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: false
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "clang-scan-deps-24.0"
+      - "clang-scan-deps-24"
+      - "clang-scan-deps24"
+      - "clang-scan-deps"
+      - "clang-scan-deps-24.0"
+      - "clang-scan-deps-24"
+      - "clang-scan-deps24"
+      - "clang-scan-deps"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/clang-scan-deps-24.0"
+      - "/home/deo3d2y/Downloads/emsdk/clang-scan-deps-24.0"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/clang-scan-deps-24.0"
+      - "/usr/local/sbin/clang-scan-deps-24.0"
+      - "/usr/local/bin/clang-scan-deps-24.0"
+      - "/usr/bin/clang-scan-deps-24.0"
+      - "/usr/bin/site_perl/clang-scan-deps-24.0"
+      - "/usr/bin/vendor_perl/clang-scan-deps-24.0"
+      - "/usr/bin/core_perl/clang-scan-deps-24.0"
+      - "/opt/rocm/bin/clang-scan-deps-24.0"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/clang-scan-deps-24.0"
+      - "/bin/clang-scan-deps-24.0"
+      - "/sbin/clang-scan-deps-24.0"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/clang-scan-deps-24"
+      - "/home/deo3d2y/Downloads/emsdk/clang-scan-deps-24"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/clang-scan-deps-24"
+      - "/usr/local/sbin/clang-scan-deps-24"
+      - "/usr/local/bin/clang-scan-deps-24"
+      - "/usr/bin/clang-scan-deps-24"
+      - "/usr/bin/site_perl/clang-scan-deps-24"
+      - "/usr/bin/vendor_perl/clang-scan-deps-24"
+      - "/usr/bin/core_perl/clang-scan-deps-24"
+      - "/opt/rocm/bin/clang-scan-deps-24"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/clang-scan-deps-24"
+      - "/bin/clang-scan-deps-24"
+      - "/sbin/clang-scan-deps-24"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/clang-scan-deps24"
+      - "/home/deo3d2y/Downloads/emsdk/clang-scan-deps24"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/clang-scan-deps24"
+      - "/usr/local/sbin/clang-scan-deps24"
+      - "/usr/local/bin/clang-scan-deps24"
+      - "/usr/bin/clang-scan-deps24"
+      - "/usr/bin/site_perl/clang-scan-deps24"
+      - "/usr/bin/vendor_perl/clang-scan-deps24"
+      - "/usr/bin/core_perl/clang-scan-deps24"
+      - "/opt/rocm/bin/clang-scan-deps24"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/clang-scan-deps24"
+      - "/bin/clang-scan-deps24"
+      - "/sbin/clang-scan-deps24"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/clang-scan-deps"
+      - "/home/deo3d2y/Downloads/emsdk/clang-scan-deps"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/clang-scan-deps"
+      - "/usr/local/sbin/clang-scan-deps"
+      - "/usr/local/bin/clang-scan-deps"
+    found: "/usr/bin/clang-scan-deps"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "/usr/local"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/FindGit.cmake:111 (find_program)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:1889 (find_package)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:1622 (__FetchContent_populateSubbuild)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2160:EVAL:2 (__FetchContent_doPopulation)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2160 (cmake_language)"
+      - "/usr/share/cmake/Modules/FetchContent.cmake:2401 (__FetchContent_Populate)"
+      - "CMakeLists.txt:14 (FetchContent_MakeAvailable)"
+    mode: "program"
+    variable: "GIT_EXECUTABLE"
+    description: "Git command line client"
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "git"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/"
+      - "/usr/local/sbin/"
+      - "/usr/local/bin/"
+      - "/usr/bin/"
+      - "/usr/bin/site_perl/"
+      - "/usr/bin/vendor_perl/"
+      - "/usr/bin/core_perl/"
+      - "/opt/rocm/bin/"
+      - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts/"
+      - "/bin/"
+      - "/sbin/"
+    searched_directories:
+      - "/home/deo3d2y/Downloads/emsdk/git"
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/git"
+      - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin/git"
+      - "/usr/local/sbin/git"
+      - "/usr/local/bin/git"
+    found: "/usr/bin/git"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+        - "/"
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot;/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+...
+
+---
+events:
+  -
+    kind: "find-v1"
+    backtrace:
+      - "/usr/share/cmake/Modules/Platform/Emscripten.cmake:6 (find_file)"
+      - "/usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake:32 (include)"
+      - "CMakeLists.txt:2 (project)"
+    mode: "file"
+    variable: "_EMSCRIPTEN_PLATFORM_MODULE"
+    description: "Path to a file."
+    settings:
+      SearchFramework: "NEVER"
+      SearchAppBundle: "NEVER"
+      CMAKE_FIND_USE_CMAKE_PATH: true
+      CMAKE_FIND_USE_CMAKE_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_SYSTEM_ENVIRONMENT_PATH: true
+      CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
+      CMAKE_FIND_USE_INSTALL_PREFIX: true
+    names:
+      - "Platform/Emscripten.cmake"
+    candidate_directories:
+      - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/"
+    found: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake"
+    search_context:
+      ENV{PATH}:
+        - "/home/deo3d2y/Downloads/emsdk"
+        - "/home/deo3d2y/Downloads/emsdk/upstream/emscripten"
+        - "/home/deo3d2y/.nvm/versions/node/v24.20.0/bin"
+        - "/usr/local/sbin"
+        - "/usr/local/bin"
+        - "/usr/bin"
+        - "/usr/bin/site_perl"
+        - "/usr/bin/vendor_perl"
+        - "/usr/bin/core_perl"
+        - "/opt/rocm/bin"
+        - "/home/deo3d2y/.vscode/extensions/ms-python.debugpy-2026.6.0-linux-x64/bundled/scripts/noConfigScripts"
+      CMAKE_INSTALL_PREFIX: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+      CMAKE_SYSTEM_PREFIX_PATH:
+        - "/"
+      CMAKE_FIND_ROOT_PATH: "/home/deo3d2y/Downloads/emsdk/upstream/emscripten/cache/sysroot"
+...

@@ -64,19 +64,60 @@ CMAKE_BINARY_DIR = /home/deo3d2y/Desktop/Dev/C++/Particles
 
 # The main recursive "all" target.
 all: CMakeFiles/particles.dir/all
+all: _deps/glm-build/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/particles.dir/codegen
+codegen: _deps/glm-build/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
-preinstall:
+preinstall: _deps/glm-build/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/particles.dir/clean
+clean: _deps/glm-build/clean
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory _deps/glm-build
+
+# Recursive "all" directory target.
+_deps/glm-build/all: _deps/glm-build/glm/all
+.PHONY : _deps/glm-build/all
+
+# Recursive "codegen" directory target.
+_deps/glm-build/codegen: _deps/glm-build/glm/codegen
+.PHONY : _deps/glm-build/codegen
+
+# Recursive "preinstall" directory target.
+_deps/glm-build/preinstall: _deps/glm-build/glm/preinstall
+.PHONY : _deps/glm-build/preinstall
+
+# Recursive "clean" directory target.
+_deps/glm-build/clean: _deps/glm-build/glm/clean
+.PHONY : _deps/glm-build/clean
+
+#=============================================================================
+# Directory level rules for directory _deps/glm-build/glm
+
+# Recursive "all" directory target.
+_deps/glm-build/glm/all:
+.PHONY : _deps/glm-build/glm/all
+
+# Recursive "codegen" directory target.
+_deps/glm-build/glm/codegen:
+.PHONY : _deps/glm-build/glm/codegen
+
+# Recursive "preinstall" directory target.
+_deps/glm-build/glm/preinstall:
+.PHONY : _deps/glm-build/glm/preinstall
+
+# Recursive "clean" directory target.
+_deps/glm-build/glm/clean:
+.PHONY : _deps/glm-build/glm/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/particles.dir

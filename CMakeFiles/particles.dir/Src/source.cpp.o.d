@@ -20,9 +20,10 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
  /usr/include/bits/wchar.h /usr/include/bits/stdint-intn.h \
  /usr/include/bits/stdint-uintn.h /usr/include/bits/stdint-least.h \
- /usr/include/GLFW/glfw3.h /usr/include/glm/glm.hpp \
- /usr/include/glm/detail/_fixes.hpp /usr/include/c++/16/cmath \
- /usr/include/c++/16/bits/requires_hosted.h \
+ /usr/include/GLFW/glfw3.h \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/glm.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/_fixes.hpp \
+ /usr/include/c++/16/cmath /usr/include/c++/16/bits/requires_hosted.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++config.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/cpu_defines.h \
@@ -82,8 +83,9 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/c++/16/tr1/poly_hermite.tcc \
  /usr/include/c++/16/tr1/poly_laguerre.tcc \
  /usr/include/c++/16/tr1/riemann_zeta.tcc \
- /usr/include/glm/detail/setup.hpp /usr/include/c++/16/cassert \
- /usr/include/c++/16/cstddef /usr/include/glm/simd/platform.h \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/setup.hpp \
+ /usr/include/c++/16/cassert /usr/include/c++/16/cstddef \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/../simd/platform.h \
  /usr/include/c++/16/cstdint /usr/include/c++/16/climits \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/limits.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/syslimits.h \
@@ -92,177 +94,184 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/bits/pthread_stack_min-dynamic.h \
  /usr/include/bits/posix2_lim.h /usr/include/bits/xopen_lim.h \
  /usr/include/bits/uio_lim.h /usr/include/c++/16/cfloat \
- /usr/include/glm/fwd.hpp /usr/include/glm/detail/qualifier.hpp \
- /usr/include/glm/detail/setup.hpp /usr/include/glm/vec2.hpp \
- /usr/include/glm/ext/vector_bool2.hpp \
- /usr/include/glm/detail/type_vec2.hpp \
- /usr/include/glm/detail/type_vec2.inl \
- /usr/include/glm/detail/compute_vector_relational.hpp \
- /usr/include/glm/ext/vector_bool2_precision.hpp \
- /usr/include/glm/ext/vector_float2.hpp \
- /usr/include/glm/ext/vector_float2_precision.hpp \
- /usr/include/glm/ext/vector_double2.hpp \
- /usr/include/glm/ext/vector_double2_precision.hpp \
- /usr/include/glm/ext/vector_int2.hpp \
- /usr/include/glm/ext/vector_int2_sized.hpp \
- /usr/include/glm/ext/scalar_int_sized.hpp \
- /usr/include/glm/detail/setup.hpp /usr/include/glm/ext/vector_uint2.hpp \
- /usr/include/glm/ext/vector_uint2_sized.hpp \
- /usr/include/glm/ext/scalar_uint_sized.hpp /usr/include/glm/vec3.hpp \
- /usr/include/glm/ext/vector_bool3.hpp \
- /usr/include/glm/detail/type_vec3.hpp \
- /usr/include/glm/detail/type_vec3.inl \
- /usr/include/glm/detail/compute_vector_decl.hpp \
- /usr/include/c++/16/functional /usr/include/c++/16/tuple \
- /usr/include/c++/16/bits/uses_allocator.h \
- /usr/include/c++/16/bits/invoke.h \
- /usr/include/c++/16/bits/functional_hash.h \
- /usr/include/c++/16/bits/hash_bytes.h /usr/include/c++/16/bits/refwrap.h \
- /usr/include/c++/16/bits/std_function.h /usr/include/c++/16/new \
- /usr/include/c++/16/bits/exception.h \
- /usr/include/c++/16/bits/new_except.h /usr/include/c++/16/typeinfo \
- /usr/include/c++/16/bits/functexcept.h /usr/include/c++/16/unordered_map \
- /usr/include/c++/16/initializer_list \
- /usr/include/c++/16/bits/unordered_map.h \
- /usr/include/c++/16/bits/hashtable.h \
- /usr/include/c++/16/bits/hashtable_policy.h \
- /usr/include/c++/16/ext/aligned_buffer.h \
- /usr/include/c++/16/ext/alloc_traits.h \
- /usr/include/c++/16/bits/alloc_traits.h \
- /usr/include/c++/16/bits/stl_construct.h \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/fwd.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/qualifier.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/vec2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec2.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/./compute_vector_relational.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/./setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int2_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../ext/scalar_int_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../ext/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint2_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../ext/scalar_uint_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/vec3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec3.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int3_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint3_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/vec4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_vec4.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_bool4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_float4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_double4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_int4_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/vector_uint4_sized.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/mat2x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/matrix_double2x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_mat2x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/type_mat2x2.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../matrix.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat2x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double2x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat2x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat2x3.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double2x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float2x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float2x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat2x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double2x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat2x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat2x4.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double2x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float2x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float2x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat3x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x2.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat3x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x3.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat3x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat3x4.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double3x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float3x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat4x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x2.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat4x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x3.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x3.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x3_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../mat4x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/../detail/type_mat4x4.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_double4x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x4.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/.././ext/matrix_float4x4_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/func_matrix.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../geometric.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/func_geometric.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../exponential.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/type_vec1.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/type_vec1.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/func_exponential.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/../vector_relational.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/../detail/func_vector_relational.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/_vectorize.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../common.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/_fixes.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/func_common.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/compute_common.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/../detail/../detail/../detail/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/matrix_double2x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/matrix_float2x2.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/./ext/matrix_float2x2_precision.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/trigonometric.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/func_trigonometric.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/packing.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/func_packing.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/type_half.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/type_half.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/integer.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/detail/func_integer.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/matrix_transform.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_projection.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/../gtc/constants.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/../gtc/../ext/scalar_constants.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/../gtc/../ext/../detail/setup.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/../gtc/../ext/scalar_constants.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/../gtc/constants.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_projection.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_clip_space.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_clip_space.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_transform.hpp \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/../ext/matrix_transform.inl \
+ /home/deo3d2y/Desktop/Dev/C++/Particles/_deps/glm-src/glm/../glm/gtc/matrix_transform.inl \
+ shader.h /usr/include/c++/16/string /usr/include/c++/16/bits/stringfwd.h \
  /usr/include/c++/16/bits/memoryfwd.h \
- /usr/include/c++/16/bits/allocator.h \
- /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++allocator.h \
- /usr/include/c++/16/bits/new_allocator.h \
- /usr/include/c++/16/bits/new_throw.h \
- /usr/include/c++/16/bits/enable_special_members.h \
- /usr/include/c++/16/bits/node_handle.h \
- /usr/include/c++/16/bits/range_access.h \
- /usr/include/c++/16/bits/erase_if.h \
- /usr/include/c++/16/bits/memory_resource.h \
- /usr/include/c++/16/bits/uses_allocator_args.h \
- /usr/include/c++/16/vector /usr/include/c++/16/bits/stl_uninitialized.h \
- /usr/include/c++/16/bits/stl_vector.h \
- /usr/include/c++/16/bits/stl_bvector.h \
- /usr/include/c++/16/bits/vector.tcc /usr/include/c++/16/array \
- /usr/include/c++/16/compare /usr/include/glm/detail/_vectorize.hpp \
- /usr/include/glm/ext/vector_bool3_precision.hpp \
- /usr/include/glm/ext/vector_float3.hpp \
- /usr/include/glm/ext/vector_float3_precision.hpp \
- /usr/include/glm/ext/vector_double3.hpp \
- /usr/include/glm/ext/vector_double3_precision.hpp \
- /usr/include/glm/ext/vector_int3.hpp \
- /usr/include/glm/ext/vector_int3_sized.hpp \
- /usr/include/glm/ext/vector_uint3.hpp \
- /usr/include/glm/ext/vector_uint3_sized.hpp /usr/include/glm/vec4.hpp \
- /usr/include/glm/ext/vector_bool4.hpp \
- /usr/include/glm/detail/type_vec4.hpp \
- /usr/include/glm/detail/type_vec4.inl \
- /usr/include/glm/ext/vector_bool4_precision.hpp \
- /usr/include/glm/ext/vector_float4.hpp \
- /usr/include/glm/ext/vector_float4_precision.hpp \
- /usr/include/glm/ext/vector_double4.hpp \
- /usr/include/glm/ext/vector_double4_precision.hpp \
- /usr/include/glm/ext/vector_int4.hpp \
- /usr/include/glm/ext/vector_int4_sized.hpp \
- /usr/include/glm/ext/vector_uint4.hpp \
- /usr/include/glm/ext/vector_uint4_sized.hpp /usr/include/glm/mat2x2.hpp \
- /usr/include/glm/ext/matrix_double2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.hpp \
- /usr/include/glm/detail/type_mat2x2.inl /usr/include/glm/matrix.hpp \
- /usr/include/glm/mat2x3.hpp /usr/include/glm/ext/matrix_double2x3.hpp \
- /usr/include/glm/detail/type_mat2x3.hpp \
- /usr/include/glm/detail/type_mat2x3.inl \
- /usr/include/glm/ext/matrix_double2x3_precision.hpp \
- /usr/include/glm/ext/matrix_float2x3.hpp \
- /usr/include/glm/ext/matrix_float2x3_precision.hpp \
- /usr/include/glm/mat2x4.hpp /usr/include/glm/ext/matrix_double2x4.hpp \
- /usr/include/glm/detail/type_mat2x4.hpp \
- /usr/include/glm/detail/type_mat2x4.inl \
- /usr/include/glm/ext/matrix_double2x4_precision.hpp \
- /usr/include/glm/ext/matrix_float2x4.hpp \
- /usr/include/glm/ext/matrix_float2x4_precision.hpp \
- /usr/include/glm/mat3x2.hpp /usr/include/glm/ext/matrix_double3x2.hpp \
- /usr/include/glm/detail/type_mat3x2.hpp \
- /usr/include/glm/detail/type_mat3x2.inl \
- /usr/include/glm/ext/matrix_double3x2_precision.hpp \
- /usr/include/glm/ext/matrix_float3x2.hpp \
- /usr/include/glm/ext/matrix_float3x2_precision.hpp \
- /usr/include/glm/mat3x3.hpp /usr/include/glm/ext/matrix_double3x3.hpp \
- /usr/include/glm/detail/type_mat3x3.hpp \
- /usr/include/glm/detail/type_mat3x3.inl /usr/include/glm/common.hpp \
- /usr/include/glm/detail/func_common.inl \
- /usr/include/glm/vector_relational.hpp \
- /usr/include/glm/detail/func_vector_relational.inl \
- /usr/include/glm/detail/compute_common.hpp \
- /usr/include/glm/detail/type_vec1.hpp \
- /usr/include/glm/detail/type_vec1.inl \
- /usr/include/glm/ext/matrix_double3x3_precision.hpp \
- /usr/include/glm/ext/matrix_float3x3.hpp \
- /usr/include/glm/ext/matrix_float3x3_precision.hpp \
- /usr/include/glm/mat3x4.hpp /usr/include/glm/ext/matrix_double3x4.hpp \
- /usr/include/glm/detail/type_mat3x4.hpp \
- /usr/include/glm/detail/type_mat3x4.inl \
- /usr/include/glm/ext/matrix_double3x4_precision.hpp \
- /usr/include/glm/ext/matrix_float3x4.hpp \
- /usr/include/glm/ext/matrix_float3x4_precision.hpp \
- /usr/include/glm/mat4x2.hpp /usr/include/glm/ext/matrix_double4x2.hpp \
- /usr/include/glm/detail/type_mat4x2.hpp \
- /usr/include/glm/detail/type_mat4x2.inl \
- /usr/include/glm/ext/matrix_double4x2_precision.hpp \
- /usr/include/glm/ext/matrix_float4x2.hpp \
- /usr/include/glm/ext/matrix_float4x2_precision.hpp \
- /usr/include/glm/mat4x3.hpp /usr/include/glm/ext/matrix_double4x3.hpp \
- /usr/include/glm/detail/type_mat4x3.hpp \
- /usr/include/glm/detail/type_mat4x3.inl \
- /usr/include/glm/ext/matrix_double4x3_precision.hpp \
- /usr/include/glm/ext/matrix_float4x3.hpp \
- /usr/include/glm/ext/matrix_float4x3_precision.hpp \
- /usr/include/glm/mat4x4.hpp /usr/include/glm/ext/matrix_double4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.hpp \
- /usr/include/glm/detail/type_mat4x4.inl /usr/include/glm/geometric.hpp \
- /usr/include/glm/detail/func_geometric.inl \
- /usr/include/glm/exponential.hpp \
- /usr/include/glm/detail/func_exponential.inl \
- /usr/include/glm/ext/matrix_double4x4_precision.hpp \
- /usr/include/glm/ext/matrix_float4x4.hpp \
- /usr/include/glm/ext/matrix_float4x4_precision.hpp \
- /usr/include/glm/detail/func_matrix.inl \
- /usr/include/glm/ext/matrix_double2x2_precision.hpp \
- /usr/include/glm/ext/matrix_float2x2.hpp \
- /usr/include/glm/ext/matrix_float2x2_precision.hpp \
- /usr/include/glm/trigonometric.hpp \
- /usr/include/glm/detail/func_trigonometric.inl \
- /usr/include/glm/packing.hpp /usr/include/glm/detail/func_packing.inl \
- /usr/include/glm/detail/type_half.hpp \
- /usr/include/glm/detail/type_half.inl /usr/include/glm/integer.hpp \
- /usr/include/glm/detail/func_integer.inl \
- /usr/include/glm/gtc/matrix_transform.hpp \
- /usr/include/glm/ext/matrix_projection.hpp \
- /usr/include/glm/gtc/constants.hpp \
- /usr/include/glm/ext/scalar_constants.hpp \
- /usr/include/glm/ext/scalar_constants.inl \
- /usr/include/glm/gtc/constants.inl \
- /usr/include/glm/ext/matrix_projection.inl \
- /usr/include/glm/ext/matrix_clip_space.hpp \
- /usr/include/glm/ext/matrix_clip_space.inl \
- /usr/include/glm/ext/matrix_transform.hpp \
- /usr/include/glm/ext/matrix_transform.inl \
- /usr/include/glm/gtc/matrix_transform.inl shader.h \
- /usr/include/c++/16/string /usr/include/c++/16/bits/stringfwd.h \
  /usr/include/c++/16/bits/char_traits.h \
  /usr/include/c++/16/bits/postypes.h /usr/include/c++/16/cwchar \
  /usr/include/wchar.h /usr/include/bits/types/wint_t.h \
  /usr/include/bits/types/mbstate_t.h \
  /usr/include/bits/types/__mbstate_t.h /usr/include/bits/types/__FILE.h \
- /usr/include/bits/types/FILE.h /usr/include/c++/16/bits/localefwd.h \
+ /usr/include/bits/types/FILE.h /usr/include/c++/16/bits/allocator.h \
+ /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++allocator.h \
+ /usr/include/c++/16/bits/new_allocator.h /usr/include/c++/16/new \
+ /usr/include/c++/16/bits/exception.h \
+ /usr/include/c++/16/bits/new_except.h \
+ /usr/include/c++/16/bits/new_throw.h \
+ /usr/include/c++/16/bits/localefwd.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++locale.h \
  /usr/include/c++/16/clocale /usr/include/locale.h \
  /usr/include/bits/locale.h /usr/include/c++/16/iosfwd \
  /usr/include/c++/16/cctype /usr/include/ctype.h \
  /usr/include/c++/16/bits/ostream_insert.h \
  /usr/include/c++/16/bits/cxxabi_forced.h \
- /usr/include/c++/16/bits/basic_string.h /usr/include/c++/16/string_view \
+ /usr/include/c++/16/bits/range_access.h \
+ /usr/include/c++/16/initializer_list /usr/include/c++/16/bits/erase_if.h \
+ /usr/include/c++/16/bits/basic_string.h \
+ /usr/include/c++/16/ext/alloc_traits.h \
+ /usr/include/c++/16/bits/alloc_traits.h \
+ /usr/include/c++/16/bits/stl_construct.h /usr/include/c++/16/string_view \
+ /usr/include/c++/16/bits/functional_hash.h \
+ /usr/include/c++/16/bits/hash_bytes.h \
  /usr/include/c++/16/bits/string_view.tcc \
  /usr/include/c++/16/ext/string_conversions.h /usr/include/c++/16/cstdlib \
  /usr/include/c++/16/cstdio /usr/include/stdio.h \
@@ -274,11 +283,15 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/linux/errno.h /usr/include/asm/errno.h \
  /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
  /usr/include/bits/types/error_t.h /usr/include/c++/16/bits/charconv.h \
- /usr/include/c++/16/bits/basic_string.tcc /usr/include/c++/16/fstream \
+ /usr/include/c++/16/bits/basic_string.tcc \
+ /usr/include/c++/16/bits/memory_resource.h \
+ /usr/include/c++/16/bits/uses_allocator.h \
+ /usr/include/c++/16/bits/uses_allocator_args.h /usr/include/c++/16/tuple \
+ /usr/include/c++/16/bits/invoke.h /usr/include/c++/16/fstream \
  /usr/include/c++/16/istream /usr/include/c++/16/ios \
  /usr/include/c++/16/exception /usr/include/c++/16/bits/exception_ptr.h \
  /usr/include/c++/16/bits/cxxabi_init_exception.h \
- /usr/include/c++/16/bits/nested_exception.h \
+ /usr/include/c++/16/typeinfo /usr/include/c++/16/bits/nested_exception.h \
  /usr/include/c++/16/bits/ios_base.h /usr/include/c++/16/ext/atomicity.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/gthr.h \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/gthr-default.h \
@@ -297,6 +310,7 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/atomic_word.h \
  /usr/include/sys/single_threaded.h \
  /usr/include/c++/16/bits/locale_classes.h \
+ /usr/include/c++/16/bits/functexcept.h \
  /usr/include/c++/16/bits/locale_classes.tcc \
  /usr/include/c++/16/system_error \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/error_constants.h \
@@ -319,6 +333,10 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/c++/16/x86_64-pc-linux-gnu/bits/c++io.h \
  /usr/include/c++/16/bits/fstream.tcc /usr/include/c++/16/sstream \
  /usr/include/c++/16/bits/sstream.tcc /usr/include/c++/16/iostream \
+ /usr/include/c++/16/vector /usr/include/c++/16/bits/stl_uninitialized.h \
+ /usr/include/c++/16/bits/stl_vector.h \
+ /usr/include/c++/16/bits/stl_bvector.h \
+ /usr/include/c++/16/bits/vector.tcc \
  /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Headers/helpers.h \
  /usr/include/c++/16/random /usr/include/c++/16/bits/random.h \
  /usr/include/c++/16/bits/uniform_int_dist.h \
@@ -329,4 +347,5 @@ CMakeFiles/particles.dir/Src/source.cpp.o: \
  /usr/include/c++/16/pstl/execution_defs.h \
  /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Headers/particle.h \
  /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Headers/setup.h \
- /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Headers/particle.h
+ /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Headers/particle.h \
+ /usr/include/c++/16/array /usr/include/c++/16/compare

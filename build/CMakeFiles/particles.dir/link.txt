@@ -1,0 +1,1 @@
+/home/deo3d2y/Downloads/emsdk/upstream/emscripten/em++ -sUSE_GLFW=3 -sUSE_WEBGL2=1 -sWASM=1 -sALLOW_MEMORY_GROWTH=1 --preload-file /home/deo3d2y/Desktop/Dev/C++/Particles/Src/Shaders@Src/Shaders @CMakeFiles/particles.dir/objects1.rsp -o particles.html

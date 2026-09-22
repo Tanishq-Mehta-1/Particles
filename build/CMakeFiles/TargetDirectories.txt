@@ -1,0 +1,7 @@
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/CMakeFiles/particles.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/CMakeFiles/edit_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/CMakeFiles/rebuild_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/_deps/glm-build/CMakeFiles/edit_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/_deps/glm-build/CMakeFiles/rebuild_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/_deps/glm-build/glm/CMakeFiles/edit_cache.dir
+/home/deo3d2y/Desktop/Dev/C++/Particles/build/_deps/glm-build/glm/CMakeFiles/rebuild_cache.dir
