@@ -30,7 +30,11 @@ int height = 720;
 float deltaTime{0.0f};
 float currentTime = {0.0f};
 float lastTime = {0.0f};
+#ifdef __EMSCRIPTEN__
+int maxParticles{15000};
+#else
 int maxParticles{30000};
+#endif
 GLFWwindow *window{};
 
 int res = 40;
