@@ -294,8 +294,14 @@ int main() {
   // Initialize objects now that OpenGL and GLFW are setup
   windowSize = points[0].getWindowSize();
   grid = new GridLookup(windowSize[0], windowSize[1], 7);
+
+#ifdef __EMSCRIPTEN__
+  objectShader = new Shader("Src/Shaders/vertexShader_web.vert",
+                            "Src/Shaders/fragmentShader_web.frag");
+#else
   objectShader = new Shader("Src/Shaders/vertexShader.vert",
                             "Src/Shaders/fragmentShader.frag");
+#endif
 
   instancedArraySetup(Model_Projections, Colors, maxParticles, circleVAO);
 
