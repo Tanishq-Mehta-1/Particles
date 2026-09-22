@@ -52,9 +52,15 @@ int setup(int width, int height, GLFWwindow *&window, int res,
 
   // setting up glfw
   glfwInit();
+#ifdef __EMSCRIPTEN__
+  glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#else
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
 
   // Clamp the requested size to the monitor's usable work area.
   GLFWmonitor *monitor = glfwGetPrimaryMonitor();
@@ -77,10 +83,12 @@ int setup(int width, int height, GLFWwindow *&window, int res,
   ImGui_Setup(window);
 
   // loading functions through GLAD
+#ifndef __EMSCRIPTEN__
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialise GLAD\n";
     return 1;
   }
+#endif
 
   int framebufferWidth = 0;
   int framebufferHeight = 0;

@@ -86,24 +86,10 @@ CMakeFiles/particles.dir/Src/source.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/particles.dir/Src/source.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deo3d2y/Desktop/Dev/C++/Particles/Src/source.cpp -o CMakeFiles/particles.dir/Src/source.cpp.s
 
-CMakeFiles/particles.dir/glad.c.o: CMakeFiles/particles.dir/flags.make
-CMakeFiles/particles.dir/glad.c.o: glad.c
-CMakeFiles/particles.dir/glad.c.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/particles.dir/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/particles.dir/glad.c.o -MF CMakeFiles/particles.dir/glad.c.o.d -o CMakeFiles/particles.dir/glad.c.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c
-
-CMakeFiles/particles.dir/glad.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/particles.dir/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c > CMakeFiles/particles.dir/glad.c.i
-
-CMakeFiles/particles.dir/glad.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/particles.dir/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c -o CMakeFiles/particles.dir/glad.c.s
-
 CMakeFiles/particles.dir/ImGui/imgui.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui.cpp.o: ImGui/imgui.cpp
 CMakeFiles/particles.dir/ImGui/imgui.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui.cpp.i: cmake_force
@@ -117,7 +103,7 @@ CMakeFiles/particles.dir/ImGui/imgui.cpp.s: cmake_force
 CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o: ImGui/imgui_draw.cpp
 CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_draw.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.i: cmake_force
@@ -131,7 +117,7 @@ CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.s: cmake_force
 CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o: ImGui/imgui_tables.cpp
 CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_tables.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.i: cmake_force
@@ -145,7 +131,7 @@ CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.s: cmake_force
 CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o: ImGui/imgui_widgets.cpp
 CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_widgets.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.i: cmake_force
@@ -159,7 +145,7 @@ CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.s: cmake_force
 CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o: ImGui/imgui_impl_glfw.cpp
 CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_glfw.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.i: cmake_force
@@ -173,7 +159,7 @@ CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.s: cmake_force
 CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o: CMakeFiles/particles.dir/flags.make
 CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o: ImGui/imgui_impl_opengl3.cpp
 CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o: CMakeFiles/particles.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o -MF CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o.d -o CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_opengl3.cpp
 
 CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.i: cmake_force
@@ -184,28 +170,42 @@ CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_opengl3.cpp -o CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.s
 
+CMakeFiles/particles.dir/glad.c.o: CMakeFiles/particles.dir/flags.make
+CMakeFiles/particles.dir/glad.c.o: glad.c
+CMakeFiles/particles.dir/glad.c.o: CMakeFiles/particles.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/deo3d2y/Desktop/Dev/C++/Particles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/particles.dir/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/particles.dir/glad.c.o -MF CMakeFiles/particles.dir/glad.c.o.d -o CMakeFiles/particles.dir/glad.c.o -c /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c
+
+CMakeFiles/particles.dir/glad.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/particles.dir/glad.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c > CMakeFiles/particles.dir/glad.c.i
+
+CMakeFiles/particles.dir/glad.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/particles.dir/glad.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/deo3d2y/Desktop/Dev/C++/Particles/glad.c -o CMakeFiles/particles.dir/glad.c.s
+
 # Object files for target particles
 particles_OBJECTS = \
 "CMakeFiles/particles.dir/Src/source.cpp.o" \
-"CMakeFiles/particles.dir/glad.c.o" \
 "CMakeFiles/particles.dir/ImGui/imgui.cpp.o" \
 "CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o" \
 "CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o" \
 "CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o" \
 "CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o" \
-"CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o"
+"CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o" \
+"CMakeFiles/particles.dir/glad.c.o"
 
 # External object files for target particles
 particles_EXTERNAL_OBJECTS =
 
 particles: CMakeFiles/particles.dir/Src/source.cpp.o
-particles: CMakeFiles/particles.dir/glad.c.o
 particles: CMakeFiles/particles.dir/ImGui/imgui.cpp.o
 particles: CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o
 particles: CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o
 particles: CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o
 particles: CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o
 particles: CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o
+particles: CMakeFiles/particles.dir/glad.c.o
 particles: CMakeFiles/particles.dir/build.make
 particles: CMakeFiles/particles.dir/compiler_depend.ts
 particles: /usr/lib/libglfw.so.3.5

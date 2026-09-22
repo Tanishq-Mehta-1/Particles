@@ -13,13 +13,11 @@ file(REMOVE_RECURSE
   "CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o.d"
   "CMakeFiles/particles.dir/Src/source.cpp.o"
   "CMakeFiles/particles.dir/Src/source.cpp.o.d"
-  "CMakeFiles/particles.dir/glad.c.o"
-  "CMakeFiles/particles.dir/glad.c.o.d"
   "particles.html"
   "particles.pdb"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C CXX)
+foreach(lang CXX)
   include(CMakeFiles/particles.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

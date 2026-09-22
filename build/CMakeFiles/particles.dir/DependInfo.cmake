@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/deo3d2y/Desktop/Dev/C++/Particles/glad.c" "CMakeFiles/particles.dir/glad.c.o" "gcc" "CMakeFiles/particles.dir/glad.c.o.d"
   "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui.cpp" "CMakeFiles/particles.dir/ImGui/imgui.cpp.o" "gcc" "CMakeFiles/particles.dir/ImGui/imgui.cpp.o.d"
   "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_draw.cpp" "CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o" "gcc" "CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o.d"
   "/home/deo3d2y/Desktop/Dev/C++/Particles/ImGui/imgui_impl_glfw.cpp" "CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o" "gcc" "CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o.d"

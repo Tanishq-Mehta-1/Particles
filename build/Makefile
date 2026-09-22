@@ -297,30 +297,6 @@ Src/source.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/particles.dir/build.make CMakeFiles/particles.dir/Src/source.cpp.s
 .PHONY : Src/source.cpp.s
 
-glad.o: glad.c.o
-.PHONY : glad.o
-
-# target to build an object file
-glad.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/particles.dir/build.make CMakeFiles/particles.dir/glad.c.o
-.PHONY : glad.c.o
-
-glad.i: glad.c.i
-.PHONY : glad.i
-
-# target to preprocess a source file
-glad.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/particles.dir/build.make CMakeFiles/particles.dir/glad.c.i
-.PHONY : glad.c.i
-
-glad.s: glad.c.s
-.PHONY : glad.s
-
-# target to generate assembly for a file
-glad.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/particles.dir/build.make CMakeFiles/particles.dir/glad.c.s
-.PHONY : glad.c.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -351,9 +327,6 @@ help:
 	@echo "... Src/source.o"
 	@echo "... Src/source.i"
 	@echo "... Src/source.s"
-	@echo "... glad.o"
-	@echo "... glad.i"
-	@echo "... glad.s"
 .PHONY : help
 
 

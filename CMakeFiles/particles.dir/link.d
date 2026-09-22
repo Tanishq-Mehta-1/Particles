@@ -3,13 +3,13 @@ particles: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o \
   CMakeFiles/particles.dir/Src/source.cpp.o \
-  CMakeFiles/particles.dir/glad.c.o \
   CMakeFiles/particles.dir/ImGui/imgui.cpp.o \
   CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o \
   CMakeFiles/particles.dir/ImGui/imgui_tables.cpp.o \
   CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o \
   CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o \
   CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o \
+  CMakeFiles/particles.dir/glad.c.o \
   /usr/lib/libglfw.so.3.5 \
   /usr/lib/libGL.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libstdc++.so \
@@ -58,8 +58,6 @@ particles: \
 
 CMakeFiles/particles.dir/Src/source.cpp.o:
 
-CMakeFiles/particles.dir/glad.c.o:
-
 CMakeFiles/particles.dir/ImGui/imgui.cpp.o:
 
 CMakeFiles/particles.dir/ImGui/imgui_draw.cpp.o:
@@ -71,6 +69,8 @@ CMakeFiles/particles.dir/ImGui/imgui_widgets.cpp.o:
 CMakeFiles/particles.dir/ImGui/imgui_impl_glfw.cpp.o:
 
 CMakeFiles/particles.dir/ImGui/imgui_impl_opengl3.cpp.o:
+
+CMakeFiles/particles.dir/glad.c.o:
 
 /usr/lib/libglfw.so.3.5:
 

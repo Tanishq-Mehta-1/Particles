@@ -16,7 +16,6 @@ FetchContent_MakeAvailable(glm)
 # Compile executable
 add_executable(particles
     Src/source.cpp
-    glad.c
     ImGui/imgui.cpp
     ImGui/imgui_draw.cpp
     ImGui/imgui_tables.cpp
@@ -24,6 +23,10 @@ add_executable(particles
     ImGui/imgui_impl_glfw.cpp
     ImGui/imgui_impl_opengl3.cpp
 )
+
+if(NOT EMSCRIPTEN)
+    target_sources(particles PRIVATE glad.c)
+endif()
 
 target_include_directories(particles PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/Src)
 # Link the fetched GLM library
