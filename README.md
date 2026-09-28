@@ -8,9 +8,11 @@ Features:
 - pre-configured options for scenarios
 
 ## Demos:
+
+Live Demo: https://tanishq-mehta-1.github.io/particles_demo/
+
 ### Gravity simulation with ~2000 particles (unoptimised)
 [![Watch demo](https://img.youtube.com/vi/c80Tbesn8Pw/hqdefault.jpg)](https://www.youtube.com/watch?v=c80Tbesn8Pw)
 
 ### 30k particles undergoing circular motion
 [![Watch demo](https://img.youtube.com/vi/Aoqa5vwLlUU/hqdefault.jpg)](https://www.youtube.com/watch?v=Aoqa5vwLlUU)
-
